@@ -19,8 +19,8 @@ public class AppParameter implements Serializable{
     private int depth = 0;
     private String remark = "";
     private long picId = 0;
-    private Date beginTime = new Date();
-    private Date endTime = new Date();
+    private Date beginTime;
+    private Date endTime;
     private Date updateTime = new Date();
     private int operatorId = 0;
 	public int getId() {

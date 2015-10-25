@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cloud.dao.AppParameterDao">
-
-	<resultMap type="com.cloud.valueobject.entity.AppParameter" id="AppParameterResult">
+	
+	<resultMap type="com.cloud.valueobject.entity.AppParameter"
+		id="AppParameterResult">
 		<result property="id" column="id" />
 		<result property="parentId" column="parent_id" />
 		<result property="type" column="type" />
@@ -18,35 +19,105 @@
 		<result property="endTime" column="end_time" />
 		<result property="updateTime" column="update_time" />
 		<result property="operatorId" column="operator_id" />
-		
 	</resultMap>
+
+	<sql id="appParameterColumns">  
+	    <trim suffixOverrides=",">  
+	    	<if test="id != null">id,</if>  
+	        <if test="parentId != null">parent_id,</if>  
+	        <if test="type != null">type,</if>  
+	        <if test="name != null">name,</if>
+	        <if test="param != null">param,</if>
+	        <if test="sort != null">sort,</if>
+	        <if test="enable != null">enable,</if>  
+	        <if test="depth != null">depth,</if>
+	        <if test="remark != null">remark,</if>
+	        <if test="picId != null">pic_id,</if>
+	        <if test="beginTime != null">begin_time,</if>
+	        <if test="endTime != null">end_time,</if>
+	        <if test="operatorId != null">operator_id</if>    
+	    </trim>  
+	</sql> 
+
+	<sql id="appParameterValues">  
+	    <trim suffixOverrides=",">  
+	    	<if test="id != null">#{id},</if>
+	        <if test="parentId != null">#{parentId},</if>  
+	        <if test="type != null">#{type},</if>  
+	        <if test="name != null">#{name},</if>
+	        <if test="param != null">#{param},</if>
+	        <if test="sort != null">#{sort},</if>
+	        <if test="enable != null">#{enable},</if>
+	        <if test="depth != null">#{depth},</if>
+	        <if test="remark != null">#{remark},</if>
+	        <if test="picId != null">#{picId},</if>
+	        <if test="beginTime != null">#{beginTime},</if>
+	        <if test="endTime != null">#{endTime},</if>
+	        <if test="operatorId != null">#{operatorId},</if>
+	    </trim> 
+	</sql>  
 
 	<!-- ############################## -->
 	<!-- ###### 增加 ###### -->
 	<!-- ############################## -->
-
-
+	<insert id="addAppParameter" parameterType="com.cloud.valueobject.entity.AppParameter">  
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select max(id)+1 a from t_parameter_app
+		</selectKey> 
+	    insert into t_parameter_app(<include refid="appParameterColumns"/>)  
+	    values (<include refid="appParameterValues"/>)  
+	</insert>
+	
+	<!--执行增加操作的SQL语句。id和parameterType 分别与AppParameterDao接口中的addAppParameter方法的名字和 参数类型一致。以#{name}的形式引用AppParameter参数 
+		的name属性，MyBatis将使用反射读取AppParameter参数 的此属性。#{name}中name大小写敏感。引用其他 的gender等属性与此一致。useGeneratedKeys设置 
+		为"true"表明要MyBatis获取由数据库自动生成的主 键；keyProperty="id"指定把获取到的主键值注入 到AppParameter的id属性 -->
+	<!-- 
+	<insert id="addAppParameter" 
+		parameterType="com.cloud.valueobject.entity.AppParameter">
+		// useGeneratedKeys="true" keyProperty="id"
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey> 
+		insert into t_parameter_app(parent_id, type, name, param, sort, enable
+			,depth, remark, pic_id, begin_time, end_time, update_time, operator_id)
+		values(#{parentId}, #{type}, #{name}, #{param}, #{sort}, #{enable}
+			,#{depth}, #{remark}, #{picId}, #{beginTime}, #{endTime}, #{updateTime}, #{operatorId})
+	</insert>
+ 	-->
 	<!-- ############################## -->
 	<!-- ###### 删除 ###### -->
 	<!-- ############################## -->
 
+	<delete id="deleteAppParameter" parameterType="com.cloud.valueobject.entity.AppParameter">
+        delete from t_parameter_app where id=#{id}
+    </delete>
 
 	<!-- ############################## -->
 	<!-- ###### 修改 ###### -->
 	<!-- ############################## -->
+	
+	<update id="updateAppParameter" parameterType="com.cloud.valueobject.entity.AppParameter" >
+        update t_parameter_app set
+        	parent_id=#{parentId}, type=#{type}, name=#{name}, param=#{param}, sort=#{sort}
+        	, enable=#{enable}, depth=#{depth}, remark=#{remark}, pic_id=#{picId}, begin_time=#{beginTime}
+        	, end_time=#{endTime}, update_time=now(), operator_id=#{operatorId}
+         where id=#{id}
+    </update>
 
 	<!-- ############################## -->
 	<!-- ###### 查询 ###### -->
 	<!-- ############################## -->
 
-	<select id="getAppParameterById"
-		parameterType="int" resultType="com.cloud.valueobject.entity.AppParameter">
+	<select id="getAppParameterById" parameterType="int"
+		resultType="com.cloud.valueobject.entity.AppParameter">
 		select * from t_parameter_app where id=#{id}
 	</select>
 
-	<select id="listAppParameterByParentId"
-		parameterType="int" resultMap="AppParameterResult">
-		select * from t_parameter_app where parent_id=#{parentId} order by sort
+	<select id="listAppParameterByParentId" parameterType="int"
+		resultMap="AppParameterResult">
+		select * from t_parameter_app where parent_id=#{parentId}
+		order by sort
 	</select>
 
 </mapper>  
