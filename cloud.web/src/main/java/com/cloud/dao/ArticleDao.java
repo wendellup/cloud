@@ -1,6 +1,10 @@
 package com.cloud.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
+
+import com.cloud.valueobject.entity.Article;
 
 @Repository
 public interface ArticleDao {
@@ -20,4 +24,7 @@ public interface ArticleDao {
 		// ///////////////////////////////
 		// ///// 查询 ////////
 		// ///////////////////////////////
+	List<Article> listArticleByAppParameterId(int paramId);
+	
+	List<Article> listArticle();
 }

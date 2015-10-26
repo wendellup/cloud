@@ -20,5 +20,6 @@
 
     <mappers>
         <mapper resource="com/cloud/dao/AppParameterDao.xml"/>
+        <mapper resource="com/cloud/dao/ArticleDao.xml"/>
     </mappers>
 </configuration>

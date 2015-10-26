@@ -7,7 +7,7 @@ public class Article implements Serializable{
 	private static final long serialVersionUID = -8717501802813327208L;
 	
 	private int id;
-	private int paramId;
+	private AppParameter appParameter;
 	private String title;
 	private String content;
 	
@@ -16,12 +16,6 @@ public class Article implements Serializable{
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getParamId() {
-		return paramId;
-	}
-	public void setParamId(int paramId) {
-		this.paramId = paramId;
 	}
 	public String getTitle() {
 		return title;
@@ -34,6 +28,12 @@ public class Article implements Serializable{
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public AppParameter getAppParameter() {
+		return appParameter;
+	}
+	public void setAppParameter(AppParameter appParameter) {
+		this.appParameter = appParameter;
 	}
 	
 	

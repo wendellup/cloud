@@ -37,9 +37,9 @@ public class TestCRUD {
 			
 			// get
 			AppParameterDao appParameterDao = session.getMapper(AppParameterDao.class);
-			AppParameter appParameter = appParameterDao.getAppParameterById(1);
-			System.out.println(appParameter.getName());
-			System.out.println(appParameter.getRemark());
+//			AppParameter appParameter = appParameterDao.getAppParameterById(1);
+//			System.out.println(appParameter.getName());
+//			System.out.println(appParameter.getRemark());
 			
 			// list
 			List<AppParameter> appParameterList = appParameterDao.listAppParameterByParentId(1);

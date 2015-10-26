@@ -74,3 +74,12 @@ INSERT INTO `t_parameter_app` VALUES ('108', '0', '0', '羊山公园', '', '0', 
 INSERT INTO `t_parameter_app` VALUES ('109', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('110', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('111', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+
+Drop TABLE IF EXISTS `t_article`;
+Create TABLE `t_article` (
+  `id` int(11) NOT NULL auto_increment,
+  `param_id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
