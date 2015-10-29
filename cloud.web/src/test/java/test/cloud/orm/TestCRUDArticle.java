@@ -36,7 +36,7 @@ public class TestCRUDArticle {
         SqlSession session = sqlSessionFactory.openSession();
         try {
         	ArticleDao articleDao = session.getMapper(ArticleDao.class);
-			List<Article> articleList = articleDao.listArticle(1);
+			List<Article> articleList = articleDao.listArticle();
 			System.out.println(articleList.size());
 			System.out.println("###########");
 			for(Article article : articleList){
