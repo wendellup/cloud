@@ -3,7 +3,7 @@
 
 <mapper namespace="com.cloud.dao.AppParameterDao">
 	
-	<resultMap type="com.cloud.valueobject.entity.AppParameter"
+	<resultMap type="AppParameter"
 		id="AppParameterResult">
 		<result property="id" column="id" />
 		<result property="parentId" column="parent_id" />
@@ -60,7 +60,7 @@
 	<!-- ############################## -->
 	<!-- ###### 增加 ###### -->
 	<!-- ############################## -->
-	<insert id="addAppParameter" parameterType="com.cloud.valueobject.entity.AppParameter">  
+	<insert id="addAppParameter" parameterType="AppParameter">  
 		<selectKey resultType="int" keyProperty="id" order="BEFORE">
 			select max(id)+1 a from t_parameter_app
 		</selectKey> 
@@ -73,7 +73,7 @@
 		为"true"表明要MyBatis获取由数据库自动生成的主 键；keyProperty="id"指定把获取到的主键值注入 到AppParameter的id属性 -->
 	<!-- 
 	<insert id="addAppParameter" 
-		parameterType="com.cloud.valueobject.entity.AppParameter">
+		parameterType="AppParameter">
 		// useGeneratedKeys="true" keyProperty="id"
 		<selectKey resultType="int" keyProperty="id" order="AFTER">
 			SELECT
@@ -89,7 +89,7 @@
 	<!-- ###### 删除 ###### -->
 	<!-- ############################## -->
 
-	<delete id="deleteAppParameter" parameterType="com.cloud.valueobject.entity.AppParameter">
+	<delete id="deleteAppParameter" parameterType="AppParameter">
         delete from t_parameter_app where id=#{id}
     </delete>
 
@@ -97,7 +97,7 @@
 	<!-- ###### 修改 ###### -->
 	<!-- ############################## -->
 	
-	<update id="updateAppParameter" parameterType="com.cloud.valueobject.entity.AppParameter" >
+	<update id="updateAppParameter" parameterType="AppParameter" >
         update t_parameter_app set
         	parent_id=#{parentId}, type=#{type}, name=#{name}, param=#{param}, sort=#{sort}
         	, enable=#{enable}, depth=#{depth}, remark=#{remark}, pic_id=#{picId}, begin_time=#{beginTime}
@@ -110,7 +110,7 @@
 	<!-- ############################## -->
 
 	<select id="getAppParameterById" parameterType="int"
-		resultType="com.cloud.valueobject.entity.AppParameter">
+		resultType="AppParameter">
 		select * from t_parameter_app where id=#{id}
 	</select>
 

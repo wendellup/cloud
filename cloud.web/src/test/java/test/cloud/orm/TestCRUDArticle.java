@@ -8,10 +8,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.cloud.dao.AppParameterDao;
 import com.cloud.dao.ArticleDao;
-import com.cloud.valueobject.entity.AppParameter;
 import com.cloud.valueobject.entity.Article;
 
 public class TestCRUDArticle {
@@ -20,8 +20,19 @@ public class TestCRUDArticle {
 
 	static {
 		try {
-			reader = Resources.getResourceAsReader("Configuration.xml");
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+//			reader = Resources.getResourceAsReader("TestConfiguration.xml");
+//			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+			try {
+				ApplicationContext factory = new ClassPathXmlApplicationContext(
+						"classpath:applicationContext.xml");
+//				ApplicationContext factory = new ClassPathXmlApplicationContext(
+//						"classpath:spring-mybatis.xml");
+				sqlSessionFactory = (SqlSessionFactory) factory.getBean(
+						"sqlSessionFactory", SqlSessionFactory.class);
+				System.out.println("----->" + sqlSessionFactory);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

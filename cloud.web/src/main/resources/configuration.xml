@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases> 
+        <typeAlias alias="AppParameter" type="com.cloud.valueobject.entity.AppParameter"/>
+        <typeAlias alias="Article" type="com.cloud.valueobject.entity.Article"/>
+        <typeAlias alias="Test" type="com.cloud.valueobject.entity.Test"/> 
+    </typeAliases> 
+
+    <mappers>
+        <mapper resource="com/cloud/dao/AppParameterDao.xml"/>
+        <mapper resource="com/cloud/dao/ArticleDao.xml"/>
+        <mapper resource="com/cloud/dao/TestDao.xml"/>
+    </mappers>
+</configuration>

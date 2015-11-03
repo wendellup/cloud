@@ -3,7 +3,7 @@
 
 <mapper namespace="com.cloud.dao.ArticleDao">
 
-	<!-- <resultMap type="com.cloud.valueobject.entity.Article" id="ArticleResult">
+	<!-- <resultMap type="Article" id="ArticleResult">
         <id column="id" property="id" />
         <result column="userName" property="userName" />
         <result column="userAge" property="userAge" />
@@ -11,21 +11,21 @@
     </resultMap> -->
 
 	<!-- User 联合文章进行查询 方法之二的配置 (多对一的方式) -->    
-    <resultMap id="resultArticleList-2" type="com.cloud.valueobject.entity.Article">
+    <resultMap id="resultArticleList-2" type="Article">
         <id property="id" column="id" />
         <result property="title" column="title" />
         <result property="content" column="content" />        
-        <association property="appParameter" javaType="com.cloud.valueobject.entity.AppParameter"
+        <association property="appParameter" javaType="AppParameter"
          resultMap="com.cloud.dao.AppParameterDao.AppParameterResult" />             
     </resultMap>
 
 	<!-- User 联合文章进行查询 方法之一的配置 (多对一的方式) -->
-	<resultMap id="resultArticleList" type="com.cloud.valueobject.entity.Article">
+	<resultMap id="resultArticleList" type="Article">
 		<id property="id" column="id" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
 
-		<association property="appParameter" javaType="com.cloud.valueobject.entity.AppParameter">
+		<association property="appParameter" javaType="AppParameter">
 			<id property="id" column="id" />
 			<result property="type" column="type" />
 			<result property="name" column="name" />
@@ -71,10 +71,10 @@
 			t_parameter_app, t_article 
 		where 
 			t_parameter_app.id=t_article.param_id and t_article.param_id=#{paramId}
-	</select> -->
-
+	</select> 
+	-->
 	<select id="listArticle" parameterType="int"
-		resultType="com.cloud.valueobject.entity.Article">
+		resultType="Article">
 		select 
 			t_article.id, t_article.title, t_article.content, t_article.param_id
 		from 
