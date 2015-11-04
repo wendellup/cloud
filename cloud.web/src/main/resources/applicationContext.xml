@@ -77,8 +77,12 @@
 	</bean> -->
 	
 	<!-- 引入配置文件 -->
-	<bean id="propertyConfigurer"
+	<!-- <bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:cloud_web.properties" />
+	</bean> -->
+	<bean id="propertyConfigurer"
+		class="com.cloud.util.PropertyUtils">
 		<property name="location" value="classpath:cloud_web.properties" />
 	</bean>
 
