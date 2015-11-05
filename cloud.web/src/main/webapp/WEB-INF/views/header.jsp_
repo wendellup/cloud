@@ -11,7 +11,7 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
-			+ path;
+			+ path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -32,14 +32,31 @@
 
 <body>
 	header...
+	<br /> path:${path}
+	<br /> basePath:<%= basePath %>
+	<br />${pageContext.request.requestURL}
+	<br />${pageContext.request.queryString}
+	<br />${header}
 	<div>
 		<li>
+			<%
+			ApplicationContext factory = new ClassPathXmlApplicationContext(
+					"classpath:applicationContext.xml");
+//			ApplicationContext factory = new ClassPathXmlApplicationContext(
+//					"classpath:spring-mybatis.xml");
+			AppParameterService appParameterService = (AppParameterService) factory.getBean(AppParameterService.class);
+			List<AppParameter> appParameterList = appParameterService
+						.listAppParameterByParentId(800);
+			request.setAttribute("appParameterList", appParameterList);
+			request.setAttribute("basePath", basePath);
+			System.out.println(request.getRequestURI());
+			%> 
 			<c:forEach items="${appParameterList}" var="info">
 				<ul>
 					<a
 						href="${basePath}${info.remark}">${info.name}</a>
-						<c:if test="${requestURI==info.remark}">
-							active
+						<c:if test="${fn:contains('${pageContext.request.requestURL}','${info.remark}')}">
+							
 						</c:if>
 				</ul>
 			</c:forEach>

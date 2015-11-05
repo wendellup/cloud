@@ -27,10 +27,23 @@ public class BlogController {
 	@Autowired
 	protected AppParameterService appParameterService;
 	
+	private void initNavigatorData(ModelAndView mav, HttpServletRequest request){
+		List<AppParameter> appParameterList =
+				appParameterService.listAppParameterByParentId(ConstVar.BLOG_ROOT_ID);
+		mav.addObject("appParameterList", appParameterList);
+		String requestURI = request.getRequestURI();
+		if(requestURI!=null){
+			mav.addObject("requestURI", requestURI); 
+		}
+	}
+	
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
+		System.out.println("requestURI:"+request.getRequestURI());
+		System.out.println("requestURL:"+request.getRequestURL());
 		ModelAndView mav = new ModelAndView("index");
+		initNavigatorData(mav, request);
 		return mav;
 	}
 	
@@ -38,6 +51,7 @@ public class BlogController {
 	public ModelAndView listArticle(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 		ModelAndView mav = new ModelAndView("article_list");
+		initNavigatorData(mav, request);
 		return mav;
 	}
 	
@@ -45,6 +59,7 @@ public class BlogController {
 	public ModelAndView demo(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 		ModelAndView mav = new ModelAndView("demo");
+		initNavigatorData(mav, request);
 		return mav;
 	}
 	
@@ -52,15 +67,15 @@ public class BlogController {
 	public ModelAndView about(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 		ModelAndView mav = new ModelAndView("about");
+		initNavigatorData(mav, request);
 		return mav;
 	}
 	
 	@RequestMapping(value = "index/test", method =RequestMethod.GET)
 	public ModelAndView testAppParameter(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
-		int parentId = WebUtils.getInt(request, "parent_id", 0);
 		List<AppParameter> appParameterList =
-				appParameterService.listAppParameterByParentId(800);
+				appParameterService.listAppParameterByParentId(ConstVar.BLOG_ROOT_ID);
 		ModelAndView mav = new ModelAndView("index");
 		mav.addObject("appParameterList", appParameterList);
 		mav.addObject("a", "aaa");
