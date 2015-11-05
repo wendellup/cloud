@@ -184,6 +184,10 @@
   <build>
     <finalName>cloud.web</finalName>
   </build>
+  <!-- 防止控制台中文乱码 -->
+  <properties>
+	<argLine>-Dfile.encoding=UTF-8</argLine>
+	</properties>
   <profiles>
 		<profile>
 			<!-- When built in OpenShift the 'openshift' profile will be used when 

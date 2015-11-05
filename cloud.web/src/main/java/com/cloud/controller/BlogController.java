@@ -16,10 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.egame.common.servlet.WebUtils;
 
 import com.cloud.service.AppParameterService;
-import com.cloud.service.TestService;
 import com.cloud.valueobject.constvar.ConstVar;
 import com.cloud.valueobject.entity.AppParameter;
-import com.cloud.valueobject.entity.Test;
 
 @Controller
 @RequestMapping("/blog")
@@ -32,12 +30,28 @@ public class BlogController {
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
-		List<AppParameter> appParameters = 
-				appParameterService.listAppParameterByParentId(ConstVar.BLOG_ROOT_ID);
-		ModelAndView mav = new ModelAndView("test");
-		mav.addObject("appParameters", appParameters);
-		mav.addObject("a", "aaa");
-		mav.addObject("b", "bbb");
+		ModelAndView mav = new ModelAndView("index");
+		return mav;
+	}
+	
+	@RequestMapping(value = "article_list", method = RequestMethod.GET)
+	public ModelAndView listArticle(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException {
+		ModelAndView mav = new ModelAndView("article_list");
+		return mav;
+	}
+	
+	@RequestMapping(value = "demo", method = RequestMethod.GET)
+	public ModelAndView demo(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException {
+		ModelAndView mav = new ModelAndView("demo");
+		return mav;
+	}
+	
+	@RequestMapping(value = "about", method = RequestMethod.GET)
+	public ModelAndView about(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException {
+		ModelAndView mav = new ModelAndView("about");
 		return mav;
 	}
 	

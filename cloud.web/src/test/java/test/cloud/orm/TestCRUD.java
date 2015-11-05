@@ -14,7 +14,6 @@ import com.cloud.valueobject.entity.AppParameter;
 public class TestCRUD {
 	private static SqlSessionFactory sqlSessionFactory;
 	// private static Reader reader;
-
 	static {
 		try {
 //			ApplicationContext factory = new ClassPathXmlApplicationContext(
