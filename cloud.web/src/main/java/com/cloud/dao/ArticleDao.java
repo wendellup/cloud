@@ -27,4 +27,8 @@ public interface ArticleDao {
 	List<Article> listArticleByAppParameterId(int paramId);
 	
 	List<Article> listArticle();
+	
+	/*List<Article> listArticleByAppParameterIdAndType(int paramId);*/
+	
+	Article getArticleById(int id);
 }

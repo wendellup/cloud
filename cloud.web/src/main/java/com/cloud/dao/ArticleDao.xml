@@ -81,4 +81,12 @@
 			t_article
 	</select>
 
+	<select id="getArticleById" parameterType="int"
+		resultType="Article">
+		select 
+			t_article.id, t_article.title, t_article.content, t_article.param_id
+		from 
+			t_article where id = #{_parameter}
+	</select>
+
 </mapper>  

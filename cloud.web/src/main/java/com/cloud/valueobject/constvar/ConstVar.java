@@ -8,7 +8,10 @@ public class ConstVar {
 	public static String QINIU_HOST_SUPERMAN;
 	public static int REPEAT_READ_NUM;
 	
+	//blog根节点id
 	public static final int BLOG_ROOT_ID = 800;
+	//文章菜单对应的id
+	public static final int ARTICLE_LIST_PARAM_ID = 802;
 	
 	static{
 		
