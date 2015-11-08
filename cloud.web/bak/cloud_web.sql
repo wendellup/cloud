@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50619
 File Encoding         : 65001
 
-Date: 2015-11-04 23:56:15
+Date: 2015-11-08 23:20:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,9 +61,9 @@ CREATE TABLE `t_article` (
 -- ----------------------------
 -- Records of t_article
 -- ----------------------------
-INSERT INTO `t_article` VALUES ('1', '1', 'test_title', 'test_content');
-INSERT INTO `t_article` VALUES ('2', '1', 'test_title_2', 'test_content_2');
-INSERT INTO `t_article` VALUES ('3', '1', 'test_title_3', 'test_content_3');
+INSERT INTO `t_article` VALUES ('1', '802', 'test_title', 'test_content');
+INSERT INTO `t_article` VALUES ('2', '802', 'test_title_2', 'test_content_2');
+INSERT INTO `t_article` VALUES ('3', '802', 'test_title_3', 'test_content_3');
 INSERT INTO `t_article` VALUES ('4', '4', 'test_title_4', 'test_content_4');
 
 -- ----------------------------
@@ -86,7 +86,7 @@ CREATE TABLE `t_parameter_app` (
   `update_time` datetime DEFAULT '1970-01-01 08:00:00' COMMENT '更新时间',
   `operator_id` int(11) DEFAULT '0' COMMENT '操作人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=808 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=815 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_parameter_app
@@ -99,10 +99,56 @@ INSERT INTO `t_parameter_app` VALUES ('8', '0', '0', '羊山公园', '', '0', '1
 INSERT INTO `t_parameter_app` VALUES ('9', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '2015-10-25 13:44:52', '2015-10-25 13:44:52', '2015-10-25 13:44:52', '0');
 INSERT INTO `t_parameter_app` VALUES ('10', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '2015-10-25 13:45:23', '2015-10-25 13:45:23', '2015-10-25 13:45:23', '0');
 INSERT INTO `t_parameter_app` VALUES ('800', '0', '0', 'blog根节点', null, '9999', '1', '1', null, null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
-INSERT INTO `t_parameter_app` VALUES ('801', '800', '0', '首页', null, '9999', '1', '1', 'index', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
-INSERT INTO `t_parameter_app` VALUES ('802', '800', '0', '文章', null, '9999', '1', '1', 'article', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
-INSERT INTO `t_parameter_app` VALUES ('803', '800', '0', 'Demo', null, '9999', '1', '1', 'demo', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
-INSERT INTO `t_parameter_app` VALUES ('804', '800', '0', 'About', null, '9999', '1', '1', 'about', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('801', '800', '0', '首页', null, '9999', '1', '1', '/blog/index', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('802', '800', '0', '文章', null, '9999', '1', '1', '/blog/article_list', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('803', '800', '0', 'Demo', null, '9999', '1', '1', '/blog/demo', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('804', '800', '0', 'About', null, '9999', '1', '1', '/blog/about', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('805', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('806', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('807', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('808', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('809', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('810', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('811', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('812', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('813', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('814', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+
+-- ----------------------------
+-- Table structure for `t_parameter_tag`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_parameter_tag`;
+CREATE TABLE `t_parameter_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag_name` varchar(32) DEFAULT NULL,
+  `tag_type` int(11) DEFAULT NULL COMMENT '1:文章标签 2:参数代码（对应表t_parameter_app字段type）',
+  `enable` tinyint(1) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_parameter_tag
+-- ----------------------------
+INSERT INTO `t_parameter_tag` VALUES ('1', '下载', '1', '1', null);
+INSERT INTO `t_parameter_tag` VALUES ('2', 'Java', '1', '1', null);
+INSERT INTO `t_parameter_tag` VALUES ('3', 'linux', '1', '1', null);
+
+-- ----------------------------
+-- Table structure for `t_parameter_tag_link`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_parameter_tag_link`;
+CREATE TABLE `t_parameter_tag_link` (
+  `business_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL DEFAULT '0',
+  `business_sort_no` int(11) DEFAULT '0' COMMENT '根据tag_id查出的list按此字段排序',
+  `tag_sort_no` int(11) DEFAULT '0' COMMENT '根据business_id查出的taglist按此字段排序',
+  `enable` tinyint(1) DEFAULT '1',
+  `start_time` bigint(20) DEFAULT NULL,
+  `end_time` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`business_id`,`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_parameter_tag_link
+-- ----------------------------
