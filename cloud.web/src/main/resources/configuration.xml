@@ -5,12 +5,14 @@
     <typeAliases> 
         <typeAlias alias="AppParameter" type="com.cloud.valueobject.entity.AppParameter"/>
         <typeAlias alias="Article" type="com.cloud.valueobject.entity.Article"/>
-        <typeAlias alias="Test" type="com.cloud.valueobject.entity.Test"/> 
+        <typeAlias alias="Test" type="com.cloud.valueobject.entity.Test"/>
+        <typeAlias alias="ParameterTag" type="com.cloud.valueobject.entity.ParameterTag"/>
     </typeAliases> 
 
     <mappers>
         <mapper resource="com/cloud/dao/AppParameterDao.xml"/>
         <mapper resource="com/cloud/dao/ArticleDao.xml"/>
         <mapper resource="com/cloud/dao/TestDao.xml"/>
+        <mapper resource="com/cloud/dao/ParameterTagDao.xml"/>
     </mappers>
 </configuration>

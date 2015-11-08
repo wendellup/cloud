@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.egame.common.servlet.WebUtils;
+
 import com.cloud.service.AppParameterService;
 import com.cloud.service.ArticleService;
 import com.cloud.valueobject.constvar.ConstVar;
+import com.cloud.valueobject.constvar.EnumType.TagType;
 import com.cloud.valueobject.entity.AppParameter;
 import com.cloud.valueobject.entity.Article;
+import com.cloud.valueobject.entity.ParameterTag;
 
 @Controller
 @RequestMapping("/blog")
@@ -54,10 +58,17 @@ public class BlogController {
 	@RequestMapping(value = "article_list", method = RequestMethod.GET)
 	public ModelAndView listArticle(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
+		int tagId = WebUtils.getInt(request, "tag_id", 0);
 		ModelAndView mav = new ModelAndView("article_list");
 		initNavigatorData(mav, request);
+		//获取文章列表信息
 		List<Article> articleList = articleService
-				.listArticleByAppParameterId(ConstVar.ARTICLE_LIST_PARAM_ID);
+				.listArticleByAppParameterIdAndTagId(
+						ConstVar.ARTICLE_LIST_PARAM_ID, tagId);
+		//获取文章标签信息
+		List<ParameterTag> parameterTagList =
+				appParameterService.listParameterTagByType(TagType.articleType);
+		mav.addObject("tagList", parameterTagList);
 		mav.addObject("articleList", articleList);
 		return mav;
 	}

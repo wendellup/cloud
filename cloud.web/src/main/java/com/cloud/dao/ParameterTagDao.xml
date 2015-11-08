@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloud.dao.ParameterTagDao">
+
+	<resultMap type="ParameterTag"
+		id="ParameterTagResult">
+		<result property="id" column="id" />
+		<result property="tagName" column="tag_name" />
+		<result property="tagType" column="tag_type" />
+		<result property="enable" column="enable" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<!-- ############################## -->
+	<!-- ###### 增加 ###### -->
+	<!-- ############################## -->
+
+
+	<!-- ############################## -->
+	<!-- ###### 删除 ###### -->
+	<!-- ############################## -->
+
+
+	<!-- ############################## -->
+	<!-- ###### 修改 ###### -->
+	<!-- ############################## -->
+
+	<!-- ############################## -->
+	<!-- ###### 查询 ###### -->
+	<!-- ############################## -->
+
+	<select id="listParameterTagByType" parameterType="int"
+		resultMap="ParameterTagResult">
+		select 
+			id, tag_name, tag_type, enable, remark 
+		from 
+			t_parameter_tag 
+		where 
+			tag_type=#{_parameter}
+	</select>
+
+</mapper>  

@@ -45,6 +45,11 @@ public class ArticleService {
 		return articleList;
 	}
 	
+	public List<Article> listArticleByAppParameterIdAndTagId(int paramId, int tagId){
+		List<Article> articleList = articleDao.listArticleByAppParameterId(paramId);
+		return articleList;
+	}
+	
 	public Article getArticleById(int id) throws Exception {
 		Article article = articleDao.getArticleById(id);
 		return article;

@@ -3,6 +3,39 @@ package com.cloud.valueobject.constvar;
 import java.util.TreeMap;
 
 public class EnumType {
+	public enum TagType {
+		none(0, "默认值"), articleType(1, "文章类型");
+        int value = 0;
+        String message = "";
+
+        public String getMessage() {
+            return this.message;
+        }
+
+        private static TreeMap<Integer, TagType> _map;
+
+        static {
+            _map = new TreeMap<Integer, TagType>();
+            for (TagType num : TagType.values()) {
+                _map.put(new Integer(num.value()), num);
+            }
+        }
+
+        public static TagType lookup(int value) {
+            return _map.get(new Integer(value));
+        }
+
+        TagType(int value, String message) {
+            this.value = value;
+            this.message = message;
+        }
+
+        public int value() {
+            return this.value;
+        }
+    }
+	
+	
     public enum VcType {
         newTopicAndClassification(1, "新专题,分类用自定义分类替换游戏包"), choiceness(2, "7.4.2精选,隐藏"), gameUpdateType(4, "游戏更新兼容");
 
