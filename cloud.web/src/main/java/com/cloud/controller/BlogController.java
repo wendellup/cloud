@@ -61,7 +61,7 @@ public class BlogController {
 		int tagId = WebUtils.getInt(request, "tag_id", 0);
 		ModelAndView mav = new ModelAndView("article_list");
 		initNavigatorData(mav, request);
-		//获取文章列表信息
+		//若未传tagId则获取整个文章列表,若传tagId则获取该tagId下文章列表信息
 		List<Article> articleList = articleService
 				.listArticleByAppParameterIdAndTagId(
 						ConstVar.ARTICLE_LIST_PARAM_ID, tagId);

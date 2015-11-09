@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloud.dao.ParameterTagLinkDao">
+
+	<resultMap type="ParameterTagLink"
+		id="ParameterTagLinkResult">
+		<result property="businessId" column="business_id" />
+		<result property="tagId" column="tag_id" />
+		<result property="businessSortNo" column="business_sort_no" />
+		<result property="tagSortNo" column="business_sort_no" />
+		<result property="enable" column="enable" />
+		<result property="startTime" column="start_time" />
+		<result property="endTime" column="end_time" />
+	</resultMap>
+
+	<!-- ############################## -->
+	<!-- ###### 增加 ###### -->
+	<!-- ############################## -->
+
+
+	<!-- ############################## -->
+	<!-- ###### 删除 ###### -->
+	<!-- ############################## -->
+
+
+	<!-- ############################## -->
+	<!-- ###### 修改 ###### -->
+	<!-- ############################## -->
+
+	<!-- ############################## -->
+	<!-- ###### 查询 ###### -->
+	<!-- ############################## -->
+
+	<select id="listParameterTagLinkByTagId" parameterType="int"
+		resultMap="ParameterTagLinkResult">
+		select 
+			business_id, tag_id, business_sort_no, tag_sort_no
+			, enable, start_time, end_time
+		from 
+			t_parameter_tag_link 
+		where 
+			tag_id=#{_parameter}
+		order by business_sort_no desc
+			
+	</select>
+
+</mapper>  
