@@ -29,19 +29,19 @@ article_list.jsp <br />
 		共 <b>${pageData.total}</b> 条
 		<c:if test="${pageData.currentPage != 0}">
 			<a href="javascript:changeCurrentPage('0')" class='first'>首页</a>
-			<a href="javascript:changeCurrentPage('${pageData.currentPage}')"
+			<a href="javascript:changeCurrentPage('${pageData.currentPage-1}')"
 				class='pre'>上一页</a>
 		</c:if>
 		当前第<span>${pageData.currentPage+1}/${pageData.pageCount}</span>页
 		<c:if test="${pageData.currentPage+1 != pageData.pageCount}">
 			<a href="javascript:changeCurrentPage('${pageData.currentPage+1}')"
 				class='next'>下一页</a>
-			<a href="javascript:changeCurrentPage('${pageData.total}')"
+			<a href="javascript:changeCurrentPage('${pageData.pageCount-1}')"
 				class='last'>末页</a>
 		</c:if>
 		跳至&nbsp;<input id="currentPageText" type='text'
-			value='${pageData.currentPage}' class='allInput w28' />&nbsp;页&nbsp; <a
-			href="javascript:changeCurrentPage($('#currentPageText').val())"
+			value='${pageData.currentPage+1}' class='allInput w28' />&nbsp;页&nbsp; <a
+			href="javascript:changeCurrentPage($('#currentPageText').val()-1)"
 			class='go'>GO</a>
 	</div>
 	<hr />

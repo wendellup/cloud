@@ -62,7 +62,7 @@ public class BlogController {
 		ModelAndView mav = new ModelAndView("article_list");
 		initNavigatorData(mav, request);
 		int currentPage = WebUtils.getInt(request, "current_page", 0);
-		int rowsOfPage = WebUtils.getInt(request, "rows_of_page", 0);
+		int rowsOfPage = WebUtils.getInt(request, "rows_of_page", ConstVar.ROWS_OF_PAGE);
 		
 		//若未传tagId则获取整个文章列表,若传tagId则获取该tagId下文章列表信息
 //		List<Article> articleList = articleService

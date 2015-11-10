@@ -10,8 +10,15 @@ function deleteBatch(basePath) {
  * 修改当前页码，调用后台重新查询
  */
 function changeCurrentPage(currentPage) {
-	alert("call list.js");
-//	$("#currentPage").val(currentPage);
-//	$("#mainForm").submit();
-	location.href="http://www.baidu.com";
+	var url = document.getElementById('path').value ;
+//	alert("${basePath}");
+//	var href = ${basePath}${requestURI}+"?current_page="+currentPage;
+//	alert(href);
+	url += "?current_page="+currentPage;
+	var rowsOfPage = document.getElementById('rowsOfPage').value ;
+	if(rowsOfPage!=0){
+		url += "&rows_of_page="+rowsOfPage;
+	}
+//	alert(url);
+	location.href=url;
 }
