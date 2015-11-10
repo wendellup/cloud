@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127.0.0.1_3306
-Source Server Version : 50619
+Source Server         : 127
+Source Server Version : 50519
 Source Host           : 127.0.0.1:3306
 Source Database       : cloud_web
 
 Target Server Type    : MYSQL
-Target Server Version : 50619
+Target Server Version : 50519
 File Encoding         : 65001
 
-Date: 2015-11-08 23:20:43
+Date: 2015-11-10 20:10:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,7 +56,7 @@ CREATE TABLE `t_article` (
   `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_article
@@ -65,6 +65,9 @@ INSERT INTO `t_article` VALUES ('1', '802', 'test_title', 'test_content');
 INSERT INTO `t_article` VALUES ('2', '802', 'test_title_2', 'test_content_2');
 INSERT INTO `t_article` VALUES ('3', '802', 'test_title_3', 'test_content_3');
 INSERT INTO `t_article` VALUES ('4', '4', 'test_title_4', 'test_content_4');
+INSERT INTO `t_article` VALUES ('5', '802', '5', '5');
+INSERT INTO `t_article` VALUES ('6', '802', '6', '6');
+INSERT INTO `t_article` VALUES ('7', '802', '7', '7');
 
 -- ----------------------------
 -- Table structure for `t_parameter_app`
@@ -86,7 +89,7 @@ CREATE TABLE `t_parameter_app` (
   `update_time` datetime DEFAULT '1970-01-01 08:00:00' COMMENT '更新时间',
   `operator_id` int(11) DEFAULT '0' COMMENT '操作人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=815 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=829 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_parameter_app
@@ -100,7 +103,7 @@ INSERT INTO `t_parameter_app` VALUES ('9', '0', '0', '羊山公园', '', '0', '1
 INSERT INTO `t_parameter_app` VALUES ('10', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '2015-10-25 13:45:23', '2015-10-25 13:45:23', '2015-10-25 13:45:23', '0');
 INSERT INTO `t_parameter_app` VALUES ('800', '0', '0', 'blog根节点', null, '9999', '1', '1', null, null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('801', '800', '0', '首页', null, '9999', '1', '1', '/blog/index', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
-INSERT INTO `t_parameter_app` VALUES ('802', '800', '0', '文章', null, '9999', '1', '1', '/blog/article_list', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('802', '800', '0', '文章', null, '9999', '1', '1', '/blog/article/list', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('803', '800', '0', 'Demo', null, '9999', '1', '1', '/blog/demo', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('804', '800', '0', 'About', null, '9999', '1', '1', '/blog/about', null, '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('805', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
@@ -113,6 +116,20 @@ INSERT INTO `t_parameter_app` VALUES ('811', '0', '0', '羊山公园', '', '0', 
 INSERT INTO `t_parameter_app` VALUES ('812', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('813', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 INSERT INTO `t_parameter_app` VALUES ('814', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('815', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('816', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('817', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('818', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('819', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('820', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('821', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('822', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('823', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('824', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('825', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('826', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('827', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
+INSERT INTO `t_parameter_app` VALUES ('828', '0', '0', '羊山公园', '', '0', '1', '0', '栖园', '0', '1970-01-01 08:00:00', '4000-01-01 08:00:00', '1970-01-01 08:00:00', '0');
 
 -- ----------------------------
 -- Table structure for `t_parameter_tag`
@@ -152,3 +169,6 @@ CREATE TABLE `t_parameter_tag_link` (
 -- ----------------------------
 -- Records of t_parameter_tag_link
 -- ----------------------------
+INSERT INTO `t_parameter_tag_link` VALUES ('1', '2', '0', '0', '1', null, null);
+INSERT INTO `t_parameter_tag_link` VALUES ('2', '2', '0', '0', '1', null, null);
+INSERT INTO `t_parameter_tag_link` VALUES ('3', '1', '0', '0', '1', null, null);
