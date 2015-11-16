@@ -21,16 +21,21 @@
 			</div>
 			<div class="col-md-6">
 				<br /><br />
-				这里是文章列表, 希望您能在这找到您需要的~
-				<p>
-				<div>
-						<c:forEach items="${pageData.content}" var="info">
-								<a
-									href="${basePath}/blog/article/${info.id}">${info.title}</a>
-								<br />
-						</c:forEach>
+				以下是文章列表, 希望您能在这找到您需要的~
+				<br />
+				<div style="height: 280px;">
+					<p>
+						<div>
+								<c:forEach items="${pageData.content}" var="info">
+										<a
+											href="${basePath}/blog/article/${info.id}">
+											<big>${info.title}</big></a>
+										<br />
+								</c:forEach>
+						</div>
+					</p>
 				</div>
-				</p>
+				
 				<div class='page fix'>
 					共 <b>${pageData.total}</b> 条
 					<c:if test="${pageData.currentPage != 0}">
@@ -50,9 +55,7 @@
 						href="javascript:changeCurrentPage($('#currentPageText').val()-1)"
 						class='go'>GO</a>
 				</div>
-				<hr />
 				<br />
-				<hr />
 			</div>
 			<div class="col-md-4">
 				<br /><br />
