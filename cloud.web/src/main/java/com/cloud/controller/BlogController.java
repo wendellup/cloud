@@ -119,7 +119,7 @@ public class BlogController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "demo", method = RequestMethod.GET)
+	@RequestMapping(value = "software", method = RequestMethod.GET)
 	public ModelAndView demo(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 		ModelAndView mav = new ModelAndView("demo");

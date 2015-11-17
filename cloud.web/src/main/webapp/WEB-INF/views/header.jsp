@@ -44,8 +44,8 @@
 </head>
 
 <body>
-	<input type="hidden" value="<%= basePath %>${requestURI}" id="path"/>
-	<input type="hidden" value="${param.rows_of_page}" id="rowsOfPage"/>
+	<input type="hidden" value="<%= basePath %>${requestURI}" id="hidden_path"/>
+	<input type="hidden" value="${param.rows_of_page}" id="hidden_rowsOfPage"/>
 
 	
 
@@ -57,9 +57,11 @@
 					<ul class="nav navbar-nav">
 						<c:forEach items="${appParameterList}" var="info">
 							<li class="
-								<c:if test='${fn:startsWith(requestURI, info.remark)}'>active</c:if>
+								<c:if test='${fn:startsWith(requestURI, info.param)}'>
+									active
+								</c:if>
 							">
-								<a href="${basePath}${info.remark}">${info.name}</a>
+								<a href="${basePath}${info.param}">${info.name}</a>
 							</li>
 						</c:forEach>
 					</ul>

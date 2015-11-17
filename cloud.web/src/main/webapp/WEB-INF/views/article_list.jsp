@@ -21,7 +21,12 @@
 			</div>
 			<div class="col-md-6">
 				<br /><br />
-				以下是文章列表, 希望您能在这找到您需要的~
+				<c:forEach items="${appParameterList}" var="info">
+					<c:if test='${fn:startsWith(requestURI, info.param)}'>
+						${info.remark}
+					</c:if>
+				</c:forEach>
+			<!-- 以下是文章列表, 希望您能在这找到您需要的~ -->
 				<br />
 				<div style="height: 280px;">
 					<p>
