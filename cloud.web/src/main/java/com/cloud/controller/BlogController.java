@@ -32,101 +32,94 @@ public class BlogController {
 
 	@Autowired
 	protected AppParameterService appParameterService;
-	
+
 	@Autowired
 	protected ArticleService articleService;
-	
-	private void initNavigatorData(ModelAndView mav, HttpServletRequest request){
-		List<AppParameter> appParameterList =
-				appParameterService.listAppParameterByParentId(ConstVar.BLOG_ROOT_ID);
+
+	private void initNavigatorData(ModelAndView mav, HttpServletRequest request) {
+		List<AppParameter> appParameterList = appParameterService
+				.listAppParameterByParentId(ConstVar.BLOG_ROOT_ID);
 		mav.addObject("appParameterList", appParameterList);
 		String requestURI = request.getRequestURI();
-		if(requestURI!=null){
-			mav.addObject("requestURI", requestURI); 
+		if (requestURI != null) {
+			mav.addObject("requestURI", requestURI);
 		}
 	}
-	
+
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ModelAndView index(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
-		System.out.println("requestURI:"+request.getRequestURI());
-		System.out.println("requestURL:"+request.getRequestURL());
+		System.out.println("requestURI:" + request.getRequestURI());
+		System.out.println("requestURL:" + request.getRequestURL());
 		ModelAndView mav = new ModelAndView("index");
 		initNavigatorData(mav, request);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/article/list", method = RequestMethod.GET)
 	public ModelAndView listArticle(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
-		ModelAndView mav = new ModelAndView("article_list");
-		initNavigatorData(mav, request);
-		int currentPage = WebUtils.getInt(request, "current_page", 0);
-		int rowsOfPage = WebUtils.getInt(request, "rows_of_page", ConstVar.ROWS_OF_PAGE);
-		
-		//若未传tagId则获取整个文章列表,若传tagId则获取该tagId下文章列表信息
-//		List<Article> articleList = articleService
-//				.listArticleByAppParameterIdAndTagId(
-//						ConstVar.ARTICLE_LIST_PARAM_ID
-//						, 0, current_page, rows_of_page);
-		PageData pd = articleService
-				.pageArticleByAppParameterIdAndTagId(
-						ConstVar.ARTICLE_LIST_PARAM_ID
-						, 0, currentPage, rowsOfPage);
-		
-		//获取文章标签信息
-		List<ParameterTag> parameterTagList =
-				appParameterService.listParameterTagByType(TagType.articleType);
-		mav.addObject("tagList", parameterTagList);
-//		mav.addObject("articleList", articleList);
-		mav.addObject("pageData", pd);
+		ModelAndView mav = getContentList(request,
+				ConstVar.ARTICLE_LIST_PARAM_ID, 0, TagType.articleType);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/article/list/tag/{tagId}", method = RequestMethod.GET)
 	public ModelAndView listArticleByTag(HttpServletRequest request,
-			HttpServletResponse response, @PathVariable int tagId) throws ServletException {
-		ModelAndView mav = new ModelAndView("article_list");
-		initNavigatorData(mav, request);
-		int currentPage = WebUtils.getInt(request, "current_page", 0);
-		int rowsOfPage = WebUtils.getInt(request, "rows_of_page", ConstVar.ROWS_OF_PAGE);
-		//若未传tagId则获取整个文章列表,若传tagId则获取该tagId下文章列表信息
-//		List<Article> articleList = articleService
-//				.listArticleByAppParameterIdAndTagId(
-//						ConstVar.ARTICLE_LIST_PARAM_ID, tagId, 0, 10);
-		PageData pd = articleService
-				.pageArticleByAppParameterIdAndTagId(
-						ConstVar.ARTICLE_LIST_PARAM_ID
-						, tagId, currentPage, rowsOfPage);
-		
-		//获取文章标签信息
-		List<ParameterTag> parameterTagList =
-				appParameterService.listParameterTagByType(TagType.articleType);
-		mav.addObject("tagList", parameterTagList);
-//		mav.addObject("articleList", articleList);
-		mav.addObject("pageData", pd);
+			HttpServletResponse response, @PathVariable int tagId)
+			throws ServletException {
+		ModelAndView mav = getContentList(request,
+				ConstVar.ARTICLE_LIST_PARAM_ID, tagId, TagType.articleType);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "article/{articleId}", method = RequestMethod.GET)
 	public ModelAndView articleDetail(HttpServletRequest request,
-			HttpServletResponse response, @PathVariable int articleId) throws Exception {
+			HttpServletResponse response, @PathVariable int articleId)
+			throws Exception {
 		Article article = articleService.getArticleById(articleId);
 		ModelAndView mav = new ModelAndView("article_detail");
 		initNavigatorData(mav, request);
 		mav.addObject("article", article);
-//		initNavigatorData(mav, request);
 		return mav;
 	}
-	
-	@RequestMapping(value = "software", method = RequestMethod.GET)
-	public ModelAndView demo(HttpServletRequest request,
+
+	@RequestMapping(value = "/software/list", method = RequestMethod.GET)
+	public ModelAndView listSoftware(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
-		ModelAndView mav = new ModelAndView("demo");
-		initNavigatorData(mav, request);
+		ModelAndView mav = getContentList(request,
+				ConstVar.SOFTWARE_LIST_PARAM_ID, 0, TagType.softwareType);
 		return mav;
 	}
-	
+
+	private ModelAndView getContentList(HttpServletRequest request,
+			int paramId, int tagId, TagType tagType) {
+		ModelAndView mav = new ModelAndView("article_list");
+		initNavigatorData(mav, request);
+		int currentPage = WebUtils.getInt(request, "current_page", 0);
+		int rowsOfPage = WebUtils.getInt(request, "rows_of_page",
+				ConstVar.ROWS_OF_PAGE);
+
+		PageData pd = articleService.pageArticleByAppParameterIdAndTagId(
+				paramId, tagId, currentPage, rowsOfPage);
+
+		// 获取文章标签信息
+		List<ParameterTag> parameterTagList = appParameterService
+				.listParameterTagByType(tagType);
+		mav.addObject("tagList", parameterTagList);
+		mav.addObject("pageData", pd);
+		return mav;
+	}
+
+	@RequestMapping(value = "/software/list/tag/{tagId}", method = RequestMethod.GET)
+	public ModelAndView listSoftwareByTag(HttpServletRequest request,
+			HttpServletResponse response, @PathVariable int tagId)
+			throws ServletException {
+		ModelAndView mav = getContentList(request,
+				ConstVar.SOFTWARE_LIST_PARAM_ID, tagId, TagType.softwareType);
+		return mav;
+	}
+
 	@RequestMapping(value = "about", method = RequestMethod.GET)
 	public ModelAndView about(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
@@ -134,17 +127,17 @@ public class BlogController {
 		initNavigatorData(mav, request);
 		return mav;
 	}
-	
-	@RequestMapping(value = "index/test", method =RequestMethod.GET)
+
+	@RequestMapping(value = "index/test", method = RequestMethod.GET)
 	public ModelAndView testAppParameter(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
-		List<AppParameter> appParameterList =
-				appParameterService.listAppParameterByParentId(ConstVar.BLOG_ROOT_ID);
+		List<AppParameter> appParameterList = appParameterService
+				.listAppParameterByParentId(ConstVar.BLOG_ROOT_ID);
 		ModelAndView mav = new ModelAndView("index");
 		mav.addObject("appParameterList", appParameterList);
 		mav.addObject("a", "aaa");
 		mav.addObject("b", "bbb");
 		return mav;
 	}
-	
+
 }

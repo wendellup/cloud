@@ -12,6 +12,8 @@ public class ConstVar {
 	public static final int BLOG_ROOT_ID = 800;
 	//文章菜单对应的id
 	public static final int ARTICLE_LIST_PARAM_ID = 802;
+	//软件推荐菜单对应的id
+	public static final int SOFTWARE_LIST_PARAM_ID = 803;
 	//默认的每页条数
 	public static final int ROWS_OF_PAGE = 5;
 	
