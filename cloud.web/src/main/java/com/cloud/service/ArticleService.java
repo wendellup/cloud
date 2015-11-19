@@ -32,7 +32,10 @@ public class ArticleService {
 	// ///////////////////////////////
 	// ///// 增加 ////////
 	// ///////////////////////////////
-
+	
+	public int addArticle(Article article){
+		return articleDao.addArticle(article);
+	}
 
 	// ///////////////////////////////
 	// ///// 刪除 ////////
@@ -88,8 +91,7 @@ public class ArticleService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Article> listArticleByAppParameterIdAndTagId(int paramId, int tagId, int currentPage
-			, int rowsOfPage){
+	public List<Article> listArticleByAppParameterIdAndTagId(int paramId, int tagId){
 		List<Article> articleList = articleDao.listArticleByAppParameterId(paramId);
 		if(tagId!=0){
 			List<ParameterTagLink> parameterTagLinkList = parameterTagLinkDao
@@ -113,12 +115,7 @@ public class ArticleService {
 	        } while(true);
 	        articleList = result;
 		}
-		int total = articleList.size();
-        PageData pd = new PageData(currentPage, total, rowsOfPage);
-        if (currentPage < pd.getPageCount()) {
-            pd.setContent(Utils.page(articleList, currentPage, rowsOfPage));
-        }
-		return (List<Article>) pd.getContent();
+		return articleList;
 	}
 	
 	public Article getArticleById(int id) throws Exception {

@@ -32,10 +32,41 @@
 		</association>
 	</resultMap>
 	
+	<sql id="articleColumns">  
+	    <trim suffixOverrides=",">  
+	    	<if test="id != null">id,</if>  
+	        <if test="appParameter!= null">param_id,</if>  
+	        <if test="title != null">title,</if>  
+	        <if test="content != null">content</if>
+	    </trim>  
+	</sql> 
+
+	<sql id="articleValues">  
+	    <trim suffixOverrides=",">  
+	    	<if test="id != null">#{id},</if>
+	        <if test="appParameter != null">#{appParameter.id},</if>  
+	        <if test="title != null">#{title},</if>  
+	        <if test="content != null">#{content}</if>
+	    </trim> 
+	</sql>
+	
 	<!-- ############################## -->
 	<!-- ###### 增加 ###### -->
 	<!-- ############################## -->
-
+	<insert id="addArticle" parameterType="Article">  
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select max(id)+1 a from t_article
+		</selectKey> 
+	    insert into t_article(<include refid="articleColumns"/>)  
+	    values (<include refid="articleValues"/>)  
+	</insert>
+	<!-- <insert id="addArticle" parameterType="Article">  
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select max(id)+1 a from t_article
+		</selectKey> 
+	    insert into t_article(id, param_id, title, content)  
+	    values (#{id},#{appParameter.id},#{title},#{content})  
+	</insert> -->
 
 	<!-- ############################## -->
 	<!-- ###### 删除 ###### -->

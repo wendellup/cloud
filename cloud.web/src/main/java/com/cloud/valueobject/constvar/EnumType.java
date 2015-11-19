@@ -4,7 +4,7 @@ import java.util.TreeMap;
 
 public class EnumType {
 	public enum TagType {
-		none(0, "默认值"), articleType(1, "文章类型"), softwareType(2, "文章类型");
+		none(0, "默认值"), articleType(802, "文章类型"), softwareType(803, "软件类型");
         int value = 0;
         String message = "";
 
