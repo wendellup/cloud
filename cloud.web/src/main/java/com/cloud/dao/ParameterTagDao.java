@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.cloud.valueobject.entity.Article;
 import com.cloud.valueobject.entity.ParameterTag;
 
 @Repository
@@ -12,7 +11,8 @@ public interface ParameterTagDao {
 		// ///////////////////////////////
 		// ///// 增加 ////////
 		// ///////////////////////////////
-
+	void addParameterTag(ParameterTag parameterTag);
+		
 		// ///////////////////////////////
 		// ///// 刪除 ////////
 		// ///////////////////////////////

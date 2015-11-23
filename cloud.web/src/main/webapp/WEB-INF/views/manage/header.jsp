@@ -49,6 +49,7 @@
 <body>
 	<input type="hidden" value="<%= basePath %>${requestURI}" id="hidden_path"/>
 	<input type="hidden" value="${param.rows_of_page}" id="hidden_rowsOfPage"/>
+	<input type="hidden" value="${paramId}" id="hidden_paramId"/>
 
 	header...
 
@@ -91,3 +92,22 @@
 		</li>
 	</div> --%>
 	<hr />
+	
+	<div style="height: 500px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<div>
+					<li>
+						<c:forEach items="${appParameterList}" var="info">
+							<ul>
+								<a
+									href="${basePath}/manage/blog/article/list?param_id=${info.id}">${info.name}</a>
+									<c:if test="${paramId == info.id}">
+									 	active
+									</c:if>
+							</ul>
+						</c:forEach>
+					</li>
+				</div>
+			</div>

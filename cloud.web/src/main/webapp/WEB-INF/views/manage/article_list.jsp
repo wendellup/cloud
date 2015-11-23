@@ -14,27 +14,9 @@
 			</c:forEach>
 		</ul>
 	</div> --%>
-	<div style="height: 500px;">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-2">
-				<div>
-					<li>
-						<c:forEach items="${appParameterList}" var="info">
-							<ul>
-								<a
-									href="${basePath}/manage/blog/article/list?param_id=${info.id}">${info.name}</a>
-									<c:if test="${param.param_id == info.id}">
-									 	active
-									</c:if>
-							</ul>
-						</c:forEach>
-					</li>
-				</div>
-			</div>
 			<div class="col-md-6">
 				<br /><br />
-				<a href="${basePath}/manage/blog/article/add?param_id=${param.param_id}">新增文章</a>
+				<a href="${basePath}/manage/blog/article/add?param_id=${paramId}">新增文章</a>
 				<br />
 				<div style="height: 360px;">
 					<p>

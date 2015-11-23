@@ -11,6 +11,7 @@ import com.cloud.dao.ParameterTagDao;
 import com.cloud.valueobject.constvar.EnumType;
 import com.cloud.valueobject.constvar.EnumType.TagType;
 import com.cloud.valueobject.entity.AppParameter;
+import com.cloud.valueobject.entity.Article;
 import com.cloud.valueobject.entity.ParameterTag;
 
 @Service
@@ -28,6 +29,11 @@ public class AppParameterService {
 	// ///// 增加 ////////
 	// ///////////////////////////////
 
+	public void addParameterTag(ParameterTag parameterTag){
+		parameterTagDao.addParameterTag(parameterTag);
+	}
+	
+	
 
 	// ///////////////////////////////
 	// ///// 刪除 ////////

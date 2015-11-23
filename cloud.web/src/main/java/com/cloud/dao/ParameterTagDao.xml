@@ -12,10 +12,36 @@
 		<result property="remark" column="remark" />
 	</resultMap>
 
+	<sql id="parameterTagColumns">  
+	    <trim suffixOverrides=",">  
+	    	<if test="id != null">id,</if>  
+	        <if test="tagName != null">tag_name,</if>  
+	        <if test="tagType != null">tag_type,</if>  
+	        <if test="enable != null">enable,</if>
+	        <if test="remark != null">remark</if>
+	    </trim>  
+	</sql> 
+
+	<sql id="parameterTagValues">  
+	    <trim suffixOverrides=",">  
+	    	<if test="id != null">#{id},</if>
+	        <if test="tagName != null">#{tagName},</if>  
+	        <if test="tagType != null">#{tagType},</if>  
+	        <if test="enable != null">#{enable},</if>
+	        <if test="remark != null">#{remark}</if>
+	    </trim> 
+	</sql>  
+
 	<!-- ############################## -->
 	<!-- ###### 增加 ###### -->
 	<!-- ############################## -->
-
+	<insert id="addParameterTag" parameterType="ParameterTag">  
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select max(id)+1 a from t_parameter_tag
+		</selectKey> 
+	    insert into t_parameter_tag(<include refid="parameterTagColumns"/>)  
+	    values (<include refid="parameterTagValues"/>)  
+	</insert>
 
 	<!-- ############################## -->
 	<!-- ###### 删除 ###### -->

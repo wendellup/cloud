@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.egame.common.model.PageData;
 import cn.egame.common.servlet.WebUtils;
 
 import com.cloud.service.AppParameterService;
@@ -38,6 +39,11 @@ public class BlogManagerController {
 	@Autowired
 	protected ArticleService articleService;
 
+	/**
+	 * 导航条信息
+	 * @param mav
+	 * @param request
+	 */
 	private void initNavigatorData(ModelAndView mav, HttpServletRequest request) {
 		List<AppParameter> appParameterList = appParameterService
 				.listAppParameterByParentId(ConstVar.BLOG_ROOT_ID);
@@ -59,8 +65,8 @@ public class BlogManagerController {
 	public ModelAndView listArticle(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 		int paramId = WebUtils.getInt(request, "param_id", ConstVar.ARTICLE_LIST_PARAM_ID);
-		ModelAndView mav = getContentList(request,
-				paramId, 0, TagType.lookup(paramId));
+		ModelAndView mav = getContentList(request, paramId, 0, TagType.lookup(paramId));
+		mav.addObject("paramId", paramId);
 		return mav;
 	}
 
@@ -68,8 +74,14 @@ public class BlogManagerController {
 	public ModelAndView addArticle(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 //		Article article = articleService.getArticleById(articleId);
-		ModelAndView mav = new ModelAndView("manage/article_detail");
+		ModelAndView mav = new ModelAndView("manage/article_add");
+		int paramId = WebUtils.getInt(request, "param_id", ConstVar.ARTICLE_LIST_PARAM_ID);
 		initNavigatorData(mav, request);
+		// 获取文章标签信息
+		List<ParameterTag> parameterTagList = appParameterService
+				.listParameterTagByType(TagType.lookup(paramId));
+		mav.addObject("paramId", paramId);
+		mav.addObject("tagList", parameterTagList);
 		return mav;
 	}
 
@@ -80,7 +92,7 @@ public class BlogManagerController {
 		return listArticle(request, response);
 	}
 	
-	@RequestMapping(value = "article/{articleId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/article/{articleId}", method = RequestMethod.GET)
 	public ModelAndView articleDetail(HttpServletRequest request,
 			HttpServletResponse response, @PathVariable int articleId)
 			throws Exception {
@@ -106,15 +118,25 @@ public class BlogManagerController {
 		int currentPage = WebUtils.getInt(request, "current_page", 0);
 		int rowsOfPage = WebUtils.getInt(request, "rows_of_page",
 				ConstVar.ROWS_OF_PAGE);
-
 		List<Article> articles = articleService.listArticleByAppParameterIdAndTagId(paramId, tagId);
-
 		// 获取文章标签信息
 		List<ParameterTag> parameterTagList = appParameterService
 				.listParameterTagByType(tagType);
 		mav.addObject("tagList", parameterTagList);
 		mav.addObject("articleList", articles);
 		return mav;
+	}
+	
+	@RequestMapping(value = "/tag/add", method = RequestMethod.POST
+			, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public Object doAddTag(HttpServletRequest request,
+			HttpServletResponse response)
+			throws Exception {
+		int paramId = WebUtils.getInt(request, "param_id", ConstVar.ARTICLE_LIST_PARAM_ID);
+		List<ParameterTag> parameterTagList = appParameterService
+				.listParameterTagByType(TagType.lookup(paramId));
+		return parameterTagList;
 	}
 
 }
