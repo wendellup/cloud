@@ -107,5 +107,14 @@ public class AppParameter implements Serializable{
 	public void setParam(String param) {
 		this.param = param;
 	}
-    
+	@Override
+	public String toString() {
+		return "AppParameter [id=" + id + ", parentId=" + parentId + ", type="
+				+ type + ", name=" + name + ", param=" + param + ", sort="
+				+ sort + ", enable=" + enable + ", depth=" + depth
+				+ ", remark=" + remark + ", picId=" + picId + ", beginTime="
+				+ beginTime + ", endTime=" + endTime + ", updateTime="
+				+ updateTime + ", operatorId=" + operatorId + "]";
+	}
+
 }

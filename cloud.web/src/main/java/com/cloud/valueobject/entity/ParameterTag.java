@@ -41,6 +41,10 @@ public class ParameterTag implements Serializable{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "ParameterTag [id=" + id + ", tagName=" + tagName + ", tagType="
+				+ tagType + ", enable=" + enable + ", remark=" + remark + "]";
+	}
+
 }

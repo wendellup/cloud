@@ -3,8 +3,7 @@
 
 <mapper namespace="com.cloud.dao.AppParameterDao">
 	
-	<resultMap type="AppParameter"
-		id="AppParameterResult">
+	<resultMap type="AppParameter" id="AppParameterResult">
 		<result property="id" column="id" />
 		<result property="parentId" column="parent_id" />
 		<result property="type" column="type" />
@@ -110,7 +109,7 @@
 	<!-- ############################## -->
 
 	<select id="getAppParameterById" parameterType="int"
-		resultType="AppParameter">
+		resultMap="AppParameterResult">
 		select * from t_parameter_app where id=#{id}
 	</select>
 

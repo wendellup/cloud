@@ -1,7 +1,6 @@
 package test.cloud.orm;
 
 import java.io.Reader;
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -9,10 +8,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.cloud.dao.AppParameterDao;
-import com.cloud.dao.ArticleDao;
-import com.cloud.valueobject.entity.AppParameter;
-import com.cloud.valueobject.entity.Article;
+import com.cloud.dao.ParameterTagDao;
+import com.cloud.valueobject.entity.ParameterTag;
 
 public class TestCRUDTag {
 	private static SqlSessionFactory sqlSessionFactory;
@@ -25,6 +22,8 @@ public class TestCRUDTag {
 			try {
 				ApplicationContext factory = new ClassPathXmlApplicationContext(
 						"classpath:applicationContext.xml");
+//				ApplicationContext factory = new ClassPathXmlApplicationContext(
+//						"classpath:TestConfiguration.xml");
 //				ApplicationContext factory = new ClassPathXmlApplicationContext(
 //						"classpath:spring-mybatis.xml");
 				sqlSessionFactory = (SqlSessionFactory) factory.getBean(
@@ -58,66 +57,21 @@ public class TestCRUDTag {
 //	}
 	
 	@Test
-	public void testAddArticle(){
-		Article article = new Article();
-    	AppParameter appParameter = new AppParameter();
-    	appParameter.setId(803);
-    	article.setTitle("test");
-    	article.setTitle("test3");
-    	article.setContent("这是一段内容");
-    	article.setAppParameter(appParameter);
+	public void testGetParameterTag(){
         SqlSession session = sqlSessionFactory.openSession();
         try {
-        	ArticleDao articleDao = session.getMapper(ArticleDao.class);
-        	
-        	int id = articleDao.addArticle(article);
-			session.commit();
-			System.out.println("当前增加的用户 id为:" + id);
-			System.out.println("当前增加的用户 id为:" + article.getId());
-        } finally {
-            session.close();
-        }
-	}
 
-	@Test
-	public void listArticle(){
-        SqlSession session = sqlSessionFactory.openSession();
-        try {
-        	ArticleDao articleDao = session.getMapper(ArticleDao.class);
-			List<Article> articleList = articleDao.listArticle();
-			System.out.println(articleList.size());
-			System.out.println("###########");
-			for(Article article : articleList){
-				System.out.println(article.getId());
-				System.out.println(article.getTitle());
-				System.out.println(article.getContent());
-//				System.out.println(article.getAppParameter().getName());
-				System.out.println("---------------");
-			}
-//			session.commit();
+        	int tagId = 2;
+        	ParameterTagDao parameterTagDao = session.getMapper(ParameterTagDao.class);
+        	ParameterTag parameterTag = parameterTagDao.getParameterTagById(tagId);
+			System.out.println(parameterTag);
         } finally {
             session.close();
         }
 	}
 	
 	@Test
-	public void listArticlesByAppParameterId(){
-        SqlSession session = sqlSessionFactory.openSession();
-        try {
-        	ArticleDao articleDao = session.getMapper(ArticleDao.class);
-			List<Article> articleList = articleDao.listArticleByAppParameterId(1);
-			System.out.println(articleList.size());
-			System.out.println("###########");
-			for(Article article : articleList){
-				System.out.println(article.getId());
-				System.out.println(article.getTitle());
-				System.out.println(article.getContent());
-				System.out.println(article.getAppParameter().getName());
-				System.out.println("---------------");
-			}
-//			session.commit();
-        } finally {
-            session.close();
-        }
+	public void testHelloWorld(){
+		System.out.println("helloWorld...");
 	}
 }

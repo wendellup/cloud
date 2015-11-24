@@ -3,8 +3,7 @@
 
 <mapper namespace="com.cloud.dao.ParameterTagDao">
 
-	<resultMap type="ParameterTag"
-		id="ParameterTagResult">
+	<resultMap type="ParameterTag" id="ParameterTagResult">
 		<result property="id" column="id" />
 		<result property="tagName" column="tag_name" />
 		<result property="tagType" column="tag_type" />
@@ -52,9 +51,20 @@
 	<!-- ###### 修改 ###### -->
 	<!-- ############################## -->
 
+	<update id="updateParameterTag" parameterType="ParameterTag" >
+        update t_parameter_tag set
+        	tag_name=#{tagName}, tag_type=#{tagType}, name=#{name}, enable=#{enable}, remark=#{remark}
+        where id=#{id}
+    </update>
+
 	<!-- ############################## -->
-	<!-- ###### 查询 ###### -->
+	<!-- ###### 查询 ###### --> <!-- resultType="ParameterTag" --> 
 	<!-- ############################## -->
+
+	<select id="getParameterTagById" parameterType="int"
+		resultMap="ParameterTagResult">
+		select * from t_parameter_tag where id=#{id}
+	</select>
 
 	<select id="listParameterTagByType" parameterType="int"
 		resultMap="ParameterTagResult">

@@ -44,10 +44,18 @@ public class AppParameterService {
 	// ///// 修改 ////////
 	// ///////////////////////////////
 
+	public void updateParameterTag(ParameterTag parameterTag){
+		parameterTagDao.updateParameterTag(parameterTag);
+	}
 
 	// ///////////////////////////////
 	// ///// 查詢 ////////
 	// ///////////////////////////////
+	
+	public ParameterTag getParameterTagById(int id) throws Exception {
+		ParameterTag parameterTag = parameterTagDao.getParameterTagById(id);
+		return parameterTag;
+	}
 
 	public AppParameter getAppParameterById(int id) throws Exception {
 		AppParameter appParameter = appParameterDao.getAppParameterById(id);

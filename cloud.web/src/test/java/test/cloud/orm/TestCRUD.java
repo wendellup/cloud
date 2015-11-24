@@ -62,7 +62,7 @@ public class TestCRUD {
 		}
 	}
 
-	@Test
+	//@Test
 	public void addAppParameter() {
 		AppParameter appParameter = new AppParameter();
 		appParameter.setName("羊山公园");
@@ -114,6 +114,20 @@ public class TestCRUD {
 				appParameterDao.deleteAppParameter(appParameter);
 			}
 			session.commit();
+		} finally {
+			session.close();
+		}
+	}
+	
+	@Test
+	public void getAppParameter() {
+		SqlSession session = sqlSessionFactory.openSession();
+		try {
+
+			AppParameterDao appParameterDao = session
+					.getMapper(AppParameterDao.class);
+			AppParameter appParameter = appParameterDao.getAppParameterById(1);
+			System.out.println(appParameter);
 		} finally {
 			session.close();
 		}

@@ -57,7 +57,7 @@ public class TestCRUDArticle {
 //		session.close();
 //	}
 	
-	@Test
+//	@Test
 	public void testAddArticle(){
 		Article article = new Article();
     	AppParameter appParameter = new AppParameter();

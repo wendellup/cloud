@@ -20,11 +20,13 @@ public interface ParameterTagDao {
 		// ///////////////////////////////
 		// ///// 修改 ////////
 		// ///////////////////////////////
-
+	void updateParameterTag(ParameterTag parameterTag);
 
 		// ///////////////////////////////
 		// ///// 查询 ////////
 		// ///////////////////////////////
+	ParameterTag getParameterTagById(int id);
+
 	List<ParameterTag> listParameterTagByType(int type);
 	
 }
