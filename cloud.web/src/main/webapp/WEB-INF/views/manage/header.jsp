@@ -47,6 +47,7 @@
 </head>
 
 <body>
+	<input type="hidden" value="<%= basePath %>" id="hidden_basePath"/>
 	<input type="hidden" value="<%= basePath %>${requestURI}" id="hidden_path"/>
 	<input type="hidden" value="${param.rows_of_page}" id="hidden_rowsOfPage"/>
 	<input type="hidden" value="${paramId}" id="hidden_paramId"/>

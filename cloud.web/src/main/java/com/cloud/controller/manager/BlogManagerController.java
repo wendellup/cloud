@@ -156,11 +156,12 @@ public class BlogManagerController {
 		int paramId = WebUtils.getInt(request, "param_id",
 				ConstVar.ARTICLE_LIST_PARAM_ID);
 		int tagId = WebUtils.getInt(request, "tag_id", 0);
-		if(tagId!=0){
-			ParameterTag parameterTag = new ParameterTag();
-			parameterTag.setId(tagId);
-			parameterTag.setEnable(false);
-			appParameterService.addParameterTag(parameterTag);
+		if(tagId != 0){
+			ParameterTag parameterTag = appParameterService.getParameterTagById(tagId);
+			if(parameterTag!=null){
+				parameterTag.setEnable(false);
+				appParameterService.updateParameterTag(parameterTag);
+			}
 		}
 		List<ParameterTag> parameterTagList = appParameterService
 				.listParameterTagByType(TagType.lookup(paramId));

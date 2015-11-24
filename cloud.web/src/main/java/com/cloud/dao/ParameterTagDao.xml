@@ -53,7 +53,7 @@
 
 	<update id="updateParameterTag" parameterType="ParameterTag" >
         update t_parameter_tag set
-        	tag_name=#{tagName}, tag_type=#{tagType}, name=#{name}, enable=#{enable}, remark=#{remark}
+        	tag_name=#{tagName}, tag_type=#{tagType},enable=#{enable}, remark=#{remark}
         where id=#{id}
     </update>
 
@@ -73,7 +73,7 @@
 		from 
 			t_parameter_tag 
 		where 
-			tag_type=#{_parameter}
+			tag_type=#{_parameter} and enable = 1
 	</select>
 
 </mapper>  

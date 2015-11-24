@@ -21,13 +21,13 @@
 				<div style="height: 360px;">
 					<p>
 						<ul>
-						<c:forEach items="${pageData.content}" var="info">
-							<li>
-								<a href="${basePath}/manage/blog/article/${info.id}">
-									<big>${info.title}</big>
-								</a>
-							</li>
-						</c:forEach>
+							<c:forEach items="${pageData.content}" var="info">
+								<li>
+									<a href="${basePath}/manage/blog/article/${info.id}">
+										<big>${info.title}</big>
+									</a>
+								</li>
+							</c:forEach>
 						</ul>
 					</p>
 				</div>
@@ -57,22 +57,11 @@
 			<div class="col-md-4">
 				<br /><br />
 				标签:
-				<div>
+				<div id="div_tag">
 					<ul>
 						<c:forEach items="${tagList}" var="info">
 							<li>
-								<a
-									<%-- <c:if test="${empty fn:startsWith(requestURI, info.remark)}"> --%>
-									<c:choose>
-										<c:when test="${fn:substringBefore(requestURI, '/tag') == ''}">
-											href="${basePath}${requestURI}/tag/${info.id}"
-										</c:when>
-										<c:otherwise>
-											href="${fn:substringBefore(requestURI, '/tag')}/tag/${info.id}"
-										</c:otherwise>
-									</c:choose> 
-									>
-									${info.tagName}</a>
+								${info.tagName} &nbsp;&nbsp;<a href="javascript:deleteTag(${info.id})">删除</a>
 							</li>
 						</c:forEach>
 					</ul>

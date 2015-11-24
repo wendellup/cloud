@@ -22,3 +22,28 @@ function changeCurrentPage(currentPage) {
 //	alert(url);
 	location.href=url;
 }
+
+//管理后台删除标签
+function deleteTag(tagId) {
+	
+	var basePath = document.getElementById('hidden_basePath').value ;
+	var paramId = document.getElementById('hidden_paramId').value ;
+	$.ajax({
+    	url: basePath + "/manage/blog/tag/delete?tag_id=" + tagId+"&param_id="+paramId,
+    	//data: "tag_name="+tagName+"&param_id="+paramId,
+    	type: "POST",
+
+    	beforeSend: function(xhr) {
+    		xhr.setRequestHeader("Accept", "application/json");
+    		xhr.setRequestHeader("Content-Type", "application/json");
+    	},
+    	success: function(data) {
+    		var respContent = "";
+    		jQuery.each(data, function(i,item){     
+                respContent += "<li>" + item.tagName +"&nbsp;&nbsp;<a href='javascript:deleteTag("+item.id+")'>删除</a></li>";
+            });  
+    		respContent = "<ul>" + respContent + "</ul>";
+    		$("#div_tag").html(respContent);   		
+    	}
+    });
+}

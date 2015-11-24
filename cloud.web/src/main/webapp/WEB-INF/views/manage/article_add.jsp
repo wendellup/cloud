@@ -55,12 +55,10 @@ $(document).ready(function() {
 	    	},
 	    	success: function(data) {
 	    		var respContent = "";
-	    		
 	    		jQuery.each(data, function(i,item){     
 	                respContent += "<li>" + item.tagName +"</li>";     
 	            });  
 	    		respContent = "<ul>" + respContent + "</ul>";
-
 	    		$("#div_tag").html(respContent);   		
 	    	}
 	    });
