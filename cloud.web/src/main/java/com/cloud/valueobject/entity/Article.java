@@ -35,6 +35,11 @@ public class Article implements Serializable{
 	public void setAppParameter(AppParameter appParameter) {
 		this.appParameter = appParameter;
 	}
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", appParameter=" + appParameter
+				+ ", title=" + title + ", content=" + content + "]";
+	}
 	
 	
 }

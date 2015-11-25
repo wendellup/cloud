@@ -17,12 +17,25 @@
 	<!-- ############################## -->
 	<!-- ###### 增加 ###### -->
 	<!-- ############################## -->
-
+	
+	<insert id="addParameterTagLinkList" parameterType="java.util.List">  
+		<!-- <selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select max(id)+1 a from t_parameter_tag
+		</selectKey>  -->
+	    insert into t_parameter_tag_link (business_id, tag_id, business_sort_no, tag_sort_no, enable, start_time, end_time) 
+	    	values
+	    <foreach collection="list" item="item" index="index" separator="," >
+	    	(#{item.businessId},#{item.tagId},#{item.businessSortNo},#{item.tagSortNo},#{item.enable},#{item.startTime},#{item.endTime})  
+    	</foreach>  
+	</insert>
 
 	<!-- ############################## -->
 	<!-- ###### 删除 ###### -->
 	<!-- ############################## -->
 
+	<delete id="deleteParameterTagLinkByBusinessId" parameterType="int">  
+		delete from t_parameter_tag_link where business_id = #{_parameter}
+	</delete>
 
 	<!-- ############################## -->
 	<!-- ###### 修改 ###### -->

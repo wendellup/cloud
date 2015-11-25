@@ -40,6 +40,7 @@
 	<link href="<%= basePath %>/resources/css/common.css" rel="stylesheet" type="text/css" />
 	<%-- <script src="<%= basePath %>/resources/js/common/jquery-1.8.0.min.js"></script> --%>
 	<script src="<%= basePath %>/resources/js/back/list.js"></script>
+	<script src="<%= basePath %>/resources/js/manage/article_list.js"></script>
 	<!-- 
 	<script type="text/javascript">
 		alert("<%= basePath %>/resources/css/all.css");

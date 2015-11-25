@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="header.jsp" %>
+<script>
+</script>
 <%-- <jsp:include page="header.jsp?id=123"/> --%>
 	<%-- <div>
 		<ul>
@@ -57,15 +59,20 @@
 			<div class="col-md-4">
 				<br /><br />
 				标签:
-				<div id="div_tag">
+				<div id="article_list_div_tag">
 					<ul>
 						<c:forEach items="${tagList}" var="info">
 							<li>
-								${info.tagName} &nbsp;&nbsp;<a href="javascript:deleteTag(${info.id})">删除</a>
+								${info.tagName}&nbsp;&nbsp;<a href="javascript:articleListDeleteTag(${info.id})">删除</a>
 							</li>
 						</c:forEach>
 					</ul>
 				</div>
+				
+				<form id="article_list_form_tag" method="post" action="${basePath}/manage/blog/tag/add.json">
+						tagName:<input type="text" name="tag_name" id="tag_name" >
+								<input type="submit">
+				</form>
 			</div>
 		</div>
 	</div>

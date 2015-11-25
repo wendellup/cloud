@@ -36,6 +36,12 @@ public class ArticleService {
 	public int addArticle(Article article){
 		return articleDao.addArticle(article);
 	}
+	
+	public int addArticleAndTagLink(Article article, List<String> tagIds){
+		articleDao.addArticle(article);
+		String tagIdsStr = Utils.toString(tagIds);
+		return 0;
+	}
 
 	// ///////////////////////////////
 	// ///// 刪除 ////////

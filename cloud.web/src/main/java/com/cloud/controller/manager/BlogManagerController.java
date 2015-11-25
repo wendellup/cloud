@@ -27,6 +27,7 @@ import com.cloud.valueobject.constvar.EnumType.TagType;
 import com.cloud.valueobject.entity.AppParameter;
 import com.cloud.valueobject.entity.Article;
 import com.cloud.valueobject.entity.ParameterTag;
+import com.cloud.valueobject.vo.ArticleVO;
 
 @Controller
 @RequestMapping("/manage/blog")
@@ -87,8 +88,10 @@ public class BlogManagerController {
 
 	@RequestMapping(value = "/article/add", method = RequestMethod.POST)
 	public ModelAndView doAddArticle(HttpServletRequest request,
-			HttpServletResponse response, @ModelAttribute Article article) throws ServletException {
-		articleService.addArticle(article);
+			HttpServletResponse response, @ModelAttribute ArticleVO articleVO) throws ServletException {
+		System.out.println(articleVO);
+		//
+		articleService.addArticle(articleVO.getArticle());
 		return listArticle(request, response);
 	}
 	
