@@ -39,7 +39,17 @@ public class ArticleService {
 	
 	public int addArticleAndTagLink(Article article, List<String> tagIds){
 		articleDao.addArticle(article);
-		String tagIdsStr = Utils.toString(tagIds);
+		if(article.getId()>0){
+			List<ParameterTagLink> parameterTagLinks = new ArrayList<ParameterTagLink>();
+			for(String tagId : tagIds){
+				ParameterTagLink parameterTagLink = new ParameterTagLink();
+				parameterTagLink.setBusinessId(article.getId());
+				parameterTagLink.setEnable(true);
+				parameterTagLink.setTagId(Utils.toInt(tagId, -1));
+				parameterTagLinks.add(parameterTagLink);
+			}
+			parameterTagLinkDao.addParameterTagLinkList(parameterTagLinks);
+		}
 		return 0;
 	}
 

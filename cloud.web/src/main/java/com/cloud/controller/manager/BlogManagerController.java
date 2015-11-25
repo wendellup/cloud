@@ -91,7 +91,7 @@ public class BlogManagerController {
 			HttpServletResponse response, @ModelAttribute ArticleVO articleVO) throws ServletException {
 		System.out.println(articleVO);
 		//
-		articleService.addArticle(articleVO.getArticle());
+		articleService.addArticleAndTagLink(articleVO.getArticle(), articleVO.getTagIds());
 		return listArticle(request, response);
 	}
 	

@@ -3,14 +3,24 @@
 <%@ include file="header.jsp" %>
 <%-- <jsp:include page="header.jsp?id=123"/> --%>
 				<div class="col-md-6">
-					<div style="height: 360px;">
-						<form method="post" action="${basePath}/manage/blog/article/add?param_id=${paramId}">
-							title:<input type="text" name="title" id="title" value="${article.title}">
-							content:<input type="text" name="content" id="content" value="${article.content}">
-							paramId:<input type="text" name="appParameter.id" value="${paramId}" id="appParameter.id">
+					<form method="post" action="${basePath}/manage/blog/article/update?param_id=${paramId}">
+						<div style="height: 360px;">
+							title:<input type="text" name="article.title" value="${article.title}">
+							content:<input type="text" name="article.content" id="content" value="${article.content}">
+							paramId:<input type="text" name="article.appParameter.id" value="${paramId}">
+							<br /><br />
+							<br /><br />
+							<br /><br />
+							<br /><br />
+							标签:
+							<div id="div_tag">
+								<c:forEach items="${tagList}" var="info">
+									<label><input type="checkbox" name="tagIds" value=${info.id}>${info.tagName}</label><br />
+								</c:forEach>
+							</div>
 							<input type="submit">
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
 				<div class="col-md-4">
 				</div>
