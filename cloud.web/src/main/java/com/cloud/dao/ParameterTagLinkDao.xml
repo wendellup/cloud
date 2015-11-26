@@ -57,5 +57,19 @@
 		order by business_sort_no desc
 			
 	</select>
+	
+	<select id="listParameterTagIdByBusinessId" parameterType="int"
+		resultType="int">
+		select 
+			tag_id
+		from 
+			t_parameter_tag_link 
+		where 
+			business_id=#{_parameter}
+		and enable = 1
+		order by business_sort_no desc
+			
+	</select>
+	
 
 </mapper>  

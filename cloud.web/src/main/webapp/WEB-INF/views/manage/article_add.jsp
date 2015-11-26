@@ -14,8 +14,8 @@
 							<br /><br />
 							标签:
 							<div id="div_tag">
-								<c:forEach items="${tagList}" var="info">
-									<label><input type="checkbox" name="tagIds" value=${info.id}>${info.tagName}</label><br />
+								<c:forEach items="${articleVO.allTagInfos}" var="info">
+									<label><input type="checkbox" name="articleTagIds" value=${info.id}>${info.tagName}</label><br />
 								</c:forEach>
 							</div>
 							<input type="submit">

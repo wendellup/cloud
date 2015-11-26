@@ -79,6 +79,19 @@ public class TestCRUDTagLink {
 	}
 	
 	@Test
+	public void listParameterTagIdByBusinessId(){
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+        	int businessId = 3;
+        	ParameterTagLinkDao parameterTagLinkDao = session.getMapper(ParameterTagLinkDao.class);
+        	List<Integer> tagIds = parameterTagLinkDao.listParameterTagIdByBusinessId(businessId);
+        	System.out.println(tagIds);
+        } finally {
+            session.close();
+        }
+	}
+	
+	@Test
 	public void testHelloWorld(){
 		System.out.println("helloWorld...");
 	}

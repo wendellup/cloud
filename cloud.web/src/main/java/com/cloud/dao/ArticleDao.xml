@@ -3,18 +3,18 @@
 
 <mapper namespace="com.cloud.dao.ArticleDao">
 
-	<!-- <resultMap type="Article" id="ArticleResult">
-        <id column="id" property="id" />
-        <result column="userName" property="userName" />
-        <result column="userAge" property="userAge" />
-        <result column="userAddress" property="userAddress" />
-    </resultMap> -->
+	<resultMap id="resultArticle" type="Article">
+        <id property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <result property="appParameter.id" column="param_id" />
+    </resultMap>
 
 	<!-- User 联合文章进行查询 方法之二的配置 (多对一的方式) -->    
     <resultMap id="resultArticleList-2" type="Article">
         <id property="id" column="id" />
         <result property="title" column="title" />
-        <result property="content" column="content" />        
+        <result property="content" column="content" />
         <association property="appParameter" javaType="AppParameter"
          resultMap="com.cloud.dao.AppParameterDao.AppParameterResult" />             
     </resultMap>
@@ -77,6 +77,12 @@
 	<!-- ###### 修改 ###### -->
 	<!-- ############################## -->
 
+	<update id="updateArticle" parameterType="Article" >
+        update t_article set
+        	param_id=#{appParameter.id}, title=#{title}, content=#{content}
+        where id=#{id}
+    </update>
+
 	<!-- ############################## -->
 	<!-- ###### 查询 ###### -->
 	<!-- ############################## -->
@@ -112,12 +118,22 @@
 			t_article
 	</select>
 
+	<!-- <select id="getArticleById" parameterType="int"
+		resultMap="resultArticle">
+		select 
+			t_article.id, t_parameter_app.id,t_parameter_app.type,t_parameter_app.name
+			,  t_article.title, t_article.content 
+		from 
+			t_article, t_parameter_app
+		where t_article.id = #{_parameter} and t_parameter_app.id=t_article.param_id
+	</select> -->
+
 	<select id="getArticleById" parameterType="int"
-		resultType="Article">
+		resultMap="resultArticle">
 		select 
 			t_article.id, t_article.title, t_article.content, t_article.param_id
 		from 
-			t_article where id = #{_parameter}
+			t_article
+		where t_article.id = #{_parameter}
 	</select>
-
 </mapper>  

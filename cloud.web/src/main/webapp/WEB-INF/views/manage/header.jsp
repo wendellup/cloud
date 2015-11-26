@@ -53,7 +53,17 @@
 	<input type="hidden" value="${param.rows_of_page}" id="hidden_rowsOfPage"/>
 	<input type="hidden" value="${paramId}" id="hidden_paramId"/>
 
-	header...
+	<%
+		User loginUser = (User) session.getAttribute("loginUser");
+		if (loginUser != null) {
+			out.println("Welcome!" + loginUser.getUserName());
+		} else {
+		%>
+		你还没有登录哦,亲!
+		<a href="login">去登录</a>
+		<%
+		}
+	%>
 
 	<%-- <div class="navbar navbar-default navbar-fixed-top " role="navigation">
 		<div class="container">

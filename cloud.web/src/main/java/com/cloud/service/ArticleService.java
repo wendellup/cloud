@@ -62,7 +62,24 @@ public class ArticleService {
 	// ///// 修改 ////////
 	// ///////////////////////////////
 
-
+	public void updateArticleAndTagLink(Article article, List<String> tagIds) {
+		articleDao.updateArticle(article);
+		parameterTagLinkDao.deleteParameterTagLinkByBusinessId(article.getId());
+		if(article.getId()>0){
+			List<ParameterTagLink> parameterTagLinks = new ArrayList<ParameterTagLink>();
+			for(String tagId : tagIds){
+				ParameterTagLink parameterTagLink = new ParameterTagLink();
+				parameterTagLink.setBusinessId(article.getId());
+				parameterTagLink.setEnable(true);
+				parameterTagLink.setTagId(Utils.toInt(tagId, -1));
+				parameterTagLinks.add(parameterTagLink);
+			}
+			if(parameterTagLinks.size()>0){
+				parameterTagLinkDao.addParameterTagLinkList(parameterTagLinks);
+			}
+		}
+	}
+	
 	// ///////////////////////////////
 	// ///// 查詢 ////////
 	// ///////////////////////////////
@@ -137,6 +154,10 @@ public class ArticleService {
 	public Article getArticleById(int id) throws Exception {
 		Article article = articleDao.getArticleById(id);
 		return article;
+	}
+	
+	public List<Integer> listParameterTagIdByBusinessId(int businessId){
+		return parameterTagLinkDao.listParameterTagIdByBusinessId(businessId);
 	}
 
 }

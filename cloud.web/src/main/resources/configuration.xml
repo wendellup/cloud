@@ -8,6 +8,7 @@
         <typeAlias alias="Test" type="com.cloud.valueobject.entity.Test"/>
         <typeAlias alias="ParameterTag" type="com.cloud.valueobject.entity.ParameterTag"/>
         <typeAlias alias="ParameterTagLink" type="com.cloud.valueobject.entity.ParameterTagLink"/>
+        <typeAlias alias="User" type="com.cloud.valueobject.entity.User"/>
     </typeAliases> 
 
     <mappers>
@@ -16,5 +17,6 @@
         <mapper resource="com/cloud/dao/TestDao.xml"/>
         <mapper resource="com/cloud/dao/ParameterTagDao.xml"/>
         <mapper resource="com/cloud/dao/ParameterTagLinkDao.xml"/>
+        <mapper resource="com/cloud/dao/UserDao.xml"/>
     </mappers>
 </configuration>

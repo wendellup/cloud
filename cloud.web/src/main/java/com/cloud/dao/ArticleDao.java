@@ -21,7 +21,7 @@ public interface ArticleDao {
 		// ///////////////////////////////
 		// ///// 修改 ////////
 		// ///////////////////////////////
-
+	void updateArticle(Article article);
 
 		// ///////////////////////////////
 		// ///// 查询 ////////
@@ -33,4 +33,5 @@ public interface ArticleDao {
 	/*List<Article> listArticleByAppParameterIdAndType(int paramId);*/
 	
 	Article getArticleById(int id);
+
 }

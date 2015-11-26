@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.cloud.valueobject.entity.ParameterTag;
 import com.cloud.valueobject.entity.ParameterTagLink;
 
 @Repository
@@ -29,5 +30,7 @@ public interface ParameterTagLinkDao {
 		// ///// 查询 ////////
 		// ///////////////////////////////
 	List<ParameterTagLink> listParameterTagLinkByTagId(int tagId);
+
+	List<Integer> listParameterTagIdByBusinessId(int businessId);
 	
 }

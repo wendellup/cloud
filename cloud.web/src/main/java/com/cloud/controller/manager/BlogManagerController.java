@@ -81,18 +81,27 @@ public class BlogManagerController {
 		// 获取文章标签信息
 		List<ParameterTag> parameterTagList = appParameterService
 				.listParameterTagByType(TagType.lookup(paramId));
+		ArticleVO articleVO = new ArticleVO(null, parameterTagList, null);
+//		mav.addObject("paramId", paramId);
+//		mav.addObject("tagList", parameterTagList);
+		mav.addObject("articleVO", articleVO);
 		mav.addObject("paramId", paramId);
-		mav.addObject("tagList", parameterTagList);
 		return mav;
 	}
 
 	@RequestMapping(value = "/article/add", method = RequestMethod.POST)
 	public ModelAndView doAddArticle(HttpServletRequest request,
 			HttpServletResponse response, @ModelAttribute ArticleVO articleVO) throws ServletException {
-		System.out.println(articleVO);
-		//
-		articleService.addArticleAndTagLink(articleVO.getArticle(), articleVO.getTagIds());
+		articleService.addArticleAndTagLink(articleVO.getArticle(), articleVO.getArticleTagIds());
 		return listArticle(request, response);
+	}
+	
+	@RequestMapping(value = "/article/update", method = RequestMethod.POST)
+	public ModelAndView doUpdateArticle(HttpServletRequest request,
+			HttpServletResponse response, @ModelAttribute ArticleVO articleVO) throws Exception {
+		System.out.println(articleVO);
+		articleService.updateArticleAndTagLink(articleVO.getArticle(), articleVO.getArticleTagIds());
+		return articleDetail(request, response, articleVO.getArticle().getId());
 	}
 	
 	@RequestMapping(value = "/article/{articleId}", method = RequestMethod.GET)
@@ -100,9 +109,16 @@ public class BlogManagerController {
 			HttpServletResponse response, @PathVariable int articleId)
 			throws Exception {
 		Article article = articleService.getArticleById(articleId);
+		// 获取文章类型下所有标签信息
+		List<ParameterTag> parameterTagList = appParameterService
+				.listParameterTagByType(TagType.lookup(article.getAppParameter().getId()));
+		// 获取文章标签信息
+		List<Integer> articleTagIds = articleService.listParameterTagIdByBusinessId(article.getId());
 		ModelAndView mav = new ModelAndView("manage/article_detail");
 		initNavigatorData(mav, request);
-		mav.addObject("article", article);
+		ArticleVO articleVO = new ArticleVO(article, parameterTagList, articleTagIds);
+		mav.addObject("articleVO", articleVO);
+		mav.addObject("paramId", article.getAppParameter().getId());
 		return mav;
 	}
 

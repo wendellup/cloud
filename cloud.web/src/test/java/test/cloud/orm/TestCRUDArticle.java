@@ -42,20 +42,33 @@ public class TestCRUDArticle {
 		return sqlSessionFactory;
 	}
 	
-//	AppParameter appParameter = new AppParameter();
-//	appParameter.setName("羊山公园");
-//	appParameter.setRemark("栖园");
-//	SqlSession session = sqlSessionFactory.openSession();
-//	try {
-//
-//		AppParameterDao dao = session.getMapper(AppParameterDao.class);
-//		int id = dao.addAppParameter(appParameter);
-//		session.commit();
-//		System.out.println("当前增加的用户 id为:" + id);
-//		System.out.println("当前增加的用户 id为:" + appParameter.getId());
-//	} finally {
-//		session.close();
-//	}
+//	@Test
+	public void testUpdateArticle(){
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+        	ArticleDao articleDao = session.getMapper(ArticleDao.class);
+        	Article article = articleDao.getArticleById(1);
+        	article.setContent(article.getContent()+"xxx");
+        	article.setTitle(article.getTitle()+"xxx");
+        	articleDao.updateArticle(article);
+        	session.commit();
+        } finally {
+            session.close();
+        }
+	}
+	
+	@Test
+	public void testGetArticle(){
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+        	ArticleDao articleDao = session.getMapper(ArticleDao.class);
+        	
+        	Article article = articleDao.getArticleById(1);
+        	System.out.println(article);
+        } finally {
+            session.close();
+        }
+	}
 	
 //	@Test
 	public void testAddArticle(){

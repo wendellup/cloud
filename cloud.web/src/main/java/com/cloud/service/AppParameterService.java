@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.cloud.dao.AppParameterDao;
 import com.cloud.dao.ParameterTagDao;
-import com.cloud.valueobject.constvar.EnumType;
 import com.cloud.valueobject.constvar.EnumType.TagType;
 import com.cloud.valueobject.entity.AppParameter;
-import com.cloud.valueobject.entity.Article;
 import com.cloud.valueobject.entity.ParameterTag;
 
 @Service
@@ -74,4 +72,5 @@ public class AppParameterService {
 	public List<ParameterTag> listParameterTagByType(TagType tagType){
 		return parameterTagDao.listParameterTagByType(tagType.value());
 	}
+	
 }
