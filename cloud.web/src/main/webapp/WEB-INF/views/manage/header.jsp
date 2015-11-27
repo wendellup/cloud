@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
-	import="com.cloud.*, java.util.List"%>
+	import="com.cloud.*, java.util.List, com.cloud.valueobject.entity.User"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
@@ -57,11 +57,14 @@
 		User loginUser = (User) session.getAttribute("loginUser");
 		if (loginUser != null) {
 			out.println("Welcome!" + loginUser.getUserName());
+			%>
+				<br />
+				<a href="/manage/blog/logout">注销</a>
+			<%
 		} else {
-		%>
-		你还没有登录哦,亲!
-		<a href="login">去登录</a>
-		<%
+			response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+			String newLocn = "/manage/blog/login";
+			response.setHeader("Location",newLocn);
 		}
 	%>
 

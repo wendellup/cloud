@@ -69,4 +69,5 @@ public class LoginController {
 		session.invalidate();
 		return mav;
 	}
+	
 }

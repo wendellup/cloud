@@ -12,7 +12,7 @@
 				timer = window.setTimeout(redirect,2000);
 			}
 			function redirect(){
-				window.location = "manage/blog/login";
+				window.location = "login";
 			}
 			startRedirect();
 		</script>
