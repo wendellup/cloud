@@ -49,7 +49,8 @@ public class LoginController {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginUser", findUser);
 //				mav.setViewName("manage/article_list");
-				 return new ModelAndView("redirect:article/list");
+//				 return new ModelAndView("redirect:article/list");
+				return new ModelAndView("redirect:article/list?param_id=802");
 			}
 			
 		} catch (Exception e) {
