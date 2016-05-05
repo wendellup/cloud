@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+body, h1, h2, h3, h4, h5, h6, div, p, span, table, tr, th, td, ul, li, em, strong, input ,textarea, b{ margin:0; padding:0;}
+body{font:12px/1.5 'Microsoft YaHei','宋体',Arial,Helvetica,sans-serif;}
+.fix{*zoom:1;}
+.fix:after{display:table;content:'';clear:both;}
+table{border-collapse:collapse;border-spacing:0;}
+
+
+
+.uc_form_table,.uc_select_table{padding: 0 10px 20px; border:1px solid #ebebeb; border-radius:3px; margin-top: 10px; margin-bottom: 10px;}
+.uc_form_table .ucft_head,.uc_select_table .ucft_head{ font-size: 14px; color: #7ec539; line-height: 34px; margin-bottom: 20px; border-bottom: 1px solid #ebebeb;}
+.uc_form_table .ucft_head em{display: inline-block; cursor: pointer; float: right; width: 15px; height: 34px;}
+.uc_form_table .ucft_head em:hover{ background-position: 0 -86px;}
+.uc_form_table_close{ height: 34px; overflow: hidden;}
+.uc_form_table_close:hover{ border-color: #7ec539;}
+.uc_form_table_close .ucft_head em{ background-position: 0 -148px;}
+.uc_form_table_close:hover .ucft_head em,.uc_form_table_close .ucft_head em:hover{ background-position: 0 -30px;}
+.uc_select_table{ border:none; height: 100%; border-radius: 0; margin: 0;position: relative;}
+.uc_select_table .ucft_head{ color: #888; font-weight: bold; margin-bottom: 10px; }
+.uc_select_table .ucft_head a{ font-size: 12px;}
+
+.uc_table_list{ border-radius: 3px; border:1px solid #eee; margin-top: 10px;}
+.uc_list_table{ width:100%;  margin-left:auto; margin-right:auto; border:none;}
+.uc_list_table tr th{ height: 34px; line-height: 34px; color: #888; background: #f3f3f3;  border-left:1px solid #eee; border-bottom: 1px solid #eee;}
+.uc_list_table tr td{ font-size: 12px; color: #505050; line-height: 16px; padding: 10px;}
+.uc_list_table td, .uc_list_table th{ text-align:center; border-left:1px solid #eee; cursor: default;word-wrap:break-word}
+.uc_list_table tr > td:first-child, .uc_list_table tr> th:first-child{border:none;}
+.uc_list_table tr> th:first-child{border-bottom:1px solid #eee; }
+.uc_list_table tr.even td, .uc_list_table tr.even th{ background:#fbfbfb; }
+.uc_list_table tr:hover td,.uc_list_table tr.even:hover td{}
+.uc_list_table tr td.fc_tip{ background:#e2faff; }
+.uc_list_table tr td.nopad{ padding:0;}
+.uc_list_table tr td.fc_red{ color: #ed6c44;}

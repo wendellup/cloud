@@ -1,0 +1,149 @@
+/* ---------------------single CSS----------------------- */
+.auto{ margin-left:auto; margin-right:auto;}
+.wid_960{ width:960px;}
+.wid_a{ width:822px;}
+.wid_h{ width:328px;}
+.wid_s{ width:348px;}
+.wid_f{ width:170px;}
+.wid_m{ width:270px;}
+.wid_ms{ width:290px;}
+
+.fl{ float:left;}
+.fr{ float:right;}
+
+.tr{ text-align:right;}
+.tc{ text-align:center;}
+
+.fx_14{ font-size:14px;}
+.fx_16{ font-size:16px;}
+.fx_20{ font-size:20px;}
+.fc_green{ color:#7cc337;}
+.fc_red{ color:#ff642e;}
+.fc_blue{ color:#429fff;}
+.fc_dark{ color:#525252;}
+.fm_s{ font-family:"宋体";}
+.fw_b{ font-weight:bold;}
+
+.mt_20{ margin-top:20px;}
+.mt_10{ margin-top:10px;}
+.ml_10{ margin-left:10px;}
+.ml_62{ margin-left:62px;}
+.mr_20{ margin-right:20px;}
+.pb_10{ padding-bottom:10px;}
+.pb_50{ padding-bottom:50px;}
+.pb_30{ padding-bottom:30px;}
+.pt_10{ padding-top:10px;}
+.pl_10{ padding-left:10px;}
+.lineh_30{ line-height:30px;}
+.bg_gray{ background:#f0f0f0;}
+
+/*----------内容----------------*/
+.head_h{ line-height:36px; border-bottom:1px solid #7cc337;}
+.step1, .step2, .step3{ font-size:14px; font-weight:bold; line-height:40px; text-align:center; background:url(../images/step.png) left top;}
+.step1 em, .step2 em, .step3 em{ display:inline-block; width:33.3%;}
+.step1 em.sled, .step2 em.sled, .step3 em.sled{ color:#fff;}
+.step2{ background-position:0 -40px;}
+.step3{background-position:0 -80px;}
+.tab{ height:50px; background:url(../images/tab.png) top}
+.tab li{ float:left; width:33.3%; height:50px; line-height:50px;text-align:center; font-size:14px;}
+.tab li a{ color:#888; display:inline-block; width:100%; height:100%;}
+.tab li a:hover{ text-decoration:none;}
+.tab li.selected{ background:url(../images/tab.png) left -51px no-repeat; color:#fff;}
+.tab li.selected a{ color:#fff;}
+
+/*-----------表单-----------------*/
+.table_head{ border-bottom:1px solid #7cc337; margin:8px 0;}
+.table_head span{ display:inline-block; background:#fff; margin-bottom:-10px; padding-right:2px;}
+/*-----------表格样式-----------------*/
+.form_table{ width:100%; color:#888;}
+.form_table tr{}
+.form_table tr td{ padding:15px 5px; position:relative;}
+.form_table tr td.tr{ width:137px;}
+.error_tip{ position:absolute; top:50px; left:5px; color:#ff642e;}
+
+/*----------输入框按钮-----------*/
+.btn1{ display:inline-block; width:300px; height:50px; line-height:50px; background:url(../images/btn.png) -364px -46px;}
+.btn3{ display:inline-block; width:70px; height:30px; text-align:center; line-height:30px; cursor:pointer; background:url(../images/btn.png) 0 0;}
+.sled3{ background-position:-80px 0; color:#7cc337;}
+.in_btn{ display:inline-block; padding-left:10px; height:30px; background:url(../images/btn.png) left -109px no-repeat;}
+.in_btn input{ height:30px; width:100%; padding-right:10px; color:#bbb; margin-right:10px; background:#fff url(../images/btn.png) right -109px no-repeat; border:none;}
+.in_btn:hover{ background-position:left -246px;}
+.in_btn:hover input{ background-position: right -246px;}
+.in_btn:active{ background-position:left -281px;}
+.in_btn:active input{ background-position: right -281px;}
+.sel_btn{ height:30px; float:left; background:url(../images/btn.png) 0 -38px; position:relative;}
+.sel_btn span{ display:inline-block; width:100%; line-height:30px; text-align:center; position:relative; z-index:3;}
+.sel_btn em{ position:absolute; right:0; top:0; z-index:1; width:30px; height:30px; background:#fff url(../images/btn.png) -310px -38px;}
+.sel_btn:hover{ background-position:0 -316px;}
+.sel_btn:hover em{ background-position:-816px -316px;}
+.sel_btn ul{ position:absolute; display:none; width:99%; top:30px; border:1px solid #bbb; background:#fff; box-shadow:0 0 5px #ddd;}
+.sel_btn ul li{ line-height:30px; padding-left:10px;}
+.sel_btn ul li:hover,.sel_btn ul li.sled{ background:#e6e6e6;}
+.sel_btn_click,.sel_btn_click:hover{ background-position:0 -71px;}
+.sel_btn_click em,.sel_btn_click:hover em{ background-position:-311px -71px;}
+.error{background-position:left -147px;}
+.error input{background-position:right -147px; }
+.load_a{ color:#429fff;}
+.file_a{display:inline-block; width:60px; height:30px; background:url(../images/btn.png) -160px 0;}
+.file_a:active { background-position:-492px 0;}
+.file_a input{ width:60px; height:30px;opacity:0; filter:alpha(opacity=0)}
+.a_blue{ display:inline-block; width:120px; height:30px; line-height:30px; background:url(../images/btn.png) -676px -46px; text-align:center;}
+.a_blue:hover{ background-position:-130px -181px; text-decoration:none;}
+.a_blue:active{ background-position:-130px -213px;}
+.a_green{ background-position:-676px -77px;}
+.a_green:hover{ background-position:0 -180px;}
+.a_green:active{ background-position:0 -212px;}
+.a_gray,.a_gray:hover,.a_gray:active{ background-position:-260px -181px;}
+.btn2{ display:inline-block; width:150px; line-height:40px; background:url(../images/btn.png) -696px 0; text-align:center;}
+.area_btn{ display:inline-block; padding-left:10px;  background:url(../images/textarea.png) left 0;}
+.area_btn textarea{ border:none; height:91px; width:100%; padding:5px 10px 5px 0;  background:url(../images/textarea.png) right 0;resize: none;}
+.area_btn:hover{ background-position:left -101px;}
+.area_btn:hover textarea{ background-position:right -101px;}
+.area_btn:active{ background-position:left -202px;}
+.area_btn:active textarea{ background-position:right -202px;}
+.checkbox{ display:inline-block; width:20px; height:20px; background:url(../images/btn.png) -618px -3px;}
+.checkbox:hover{ background-position:-644px -3px;}
+.checkbox_sled{ background-position:-562px -3px;}
+.checkbox_sled:hover{ background-position:-590px -3px;}
+.reg_btn{ display:inline-block; line-height:50px; padding-left:50px; background:url(../images/reg_btn.png) left 0 no-repeat;}
+.reg_btn a{ display:inline-block; line-height:50px; padding-right:50px; font-size:14px; background:url(../images/reg_btn.png) right 0 no-repeat;}
+.reg_btn a:hover{ text-decoration:none;}
+.reg_btn:hover{ background-position: left -61px;}
+.reg_btn:hover a{ background-position: right -61px;}
+.reg_btn:active{ background-position: left -121px;}
+.reg_btn:active a{ background-position: right -121px;}
+.reg_unc,.reg_unc:hover,.reg_unc:active{ background-position: left -182px;}
+.reg_unc a,.reg_unc:hover a,.reg_unc:active a{ background-position: right -182px;}
+/*-----------管理中心--------------*/
+.banner_top{ background:url(../images/user_bg.png) left -1px no-repeat; height:150px; }
+.user_msg{ width:196px; padding:18px 5px;}
+.user_msg img{ width:32px; height:39px; margin:0 7px;}
+.step{ width:740px; height:150px; margin-left:13px; background:url(../images/step2.png) 34px 34px no-repeat;}
+.bg_none{ background:none;}
+.time{ position:relative; margin-top:17px;}
+.operation{ position:relative; margin-top:60px;}
+.time em,.operation span{ position:absolute;}
+.t1{ left:60px;} .t2{ left:190px;} .t3{ left:330px;} .t4{ left:500px;} .t5{ left:90px;} .t6{ left:280px;}
+.o1{ left:20px;} .o2{ left:105px;} .o3{ left:280px;} .o4{ left:380px;} .o5{ left:570px;} .o6{ left:170px;}
+.step_reg{ margin:0 auto; background:url(../images/step_reg.png) 34px 34px no-repeat;}
+.step_reg .operation{ padding-top:60px;}
+.banner_center{ height:120px; margin-top:10px; background:url(../images/user_bg.png) 0 -156px;}
+.pcoduct_num,.pcoduct_num2{ line-height:40px;}
+.pcoduct_num2{ padding-left:40px;}
+.bd_bm{ border-bottom:1px solid #f0f0f0;}
+.pcoduct_num span, .pcoduct_num2 span{ display:inline-block; width:33.3%; text-align:center;}
+.pcoduct_num2 span{ text-align:left;}
+.step_img{ height:40px; background:url(../images/step3.png) 10px 0 no-repeat;}
+.step_img2{ padding:0 0 70px 0; background:url(../images/step4.png) 0 50px no-repeat;}
+
+/* 添加渠道 */
+.has_channel{ width:306px;}
+.has_channel p{ width:214px; line-height:30px;}
+.has_channel .in_btn{ width:194px;}
+.has_channel .search_a{ display:inline-block; text-align:center; width:80px; line-height:30px; margin-left:12px; background:url(../images/add_channel.png) 0 0;}
+.has_channel ul{ width:295px; height:160px; padding:10px 5px; overflow-x:hidden; background:url(../images/add_channel.png) 0 -32px;}
+.has_channel ul li{font-size:14px; padding:5px 10px;}
+.has_channel ul li.selected{ background:#f5f5f5;}
+.add_btn{ width:146px; padding-top:85px;}
+.add_btn a{ display:inline-block; width:100px; line-height:30px; margin-bottom:10px; background:url(../images/add_channel.png) -86px -1px; text-align:center; color:#505050;}
+

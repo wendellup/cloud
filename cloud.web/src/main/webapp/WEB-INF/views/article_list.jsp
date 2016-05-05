@@ -14,13 +14,13 @@
 			</c:forEach>
 		</ul>
 	</div> --%>
-	<div style="height: 500px;">
+	<div style="min-height: 600px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
 			</div>
 			<div class="col-md-6">
-				<br /><br />
+				<br />
 				<c:forEach items="${appParameterList}" var="info">
 					<c:if test='${fn:startsWith(requestURI, info.param)}'>
 						${info.remark}
@@ -28,14 +28,18 @@
 				</c:forEach>
 			<!-- 以下是文章列表, 希望您能在这找到您需要的~ -->
 				<br />
-				<div style="height: 360px;">
+				<br />
+				<div style="min-height: 400px;">
 					<p>
 						<div>
 								<c:forEach items="${pageData.content}" var="info">
 										<a
 											href="${basePath}/blog/article/${info.id}">
-											<big>${info.title}</big></a>
-										<br />
+											<%-- <big>${info.title}</big> --%>
+											${info.title}
+										</a>
+										<hr />
+										<!-- <br /> -->
 								</c:forEach>
 						</div>
 					</p>
@@ -67,11 +71,12 @@
 			<div class="col-md-4">
 				<br /><br />
 				标签:
-				<div>
-					<ul>
+				<div style="margin-left:20px;">
+					<!-- <ul> -->
 						<c:forEach items="${tagList}" var="info">
-							<li>
-								<a
+							<!-- <li> -->
+							
+								<a style="text-decoration:none;"
 									<%-- <c:if test="${empty fn:startsWith(requestURI, info.remark)}"> --%>
 									<c:choose>
 										<c:when test="${fn:substringBefore(requestURI, '/tag') == ''}">
@@ -81,11 +86,13 @@
 											href="${fn:substringBefore(requestURI, '/tag')}/tag/${info.id}"
 										</c:otherwise>
 									</c:choose> 
-									>
-									${info.tagName}</a>
-							</li>
+									><span style="display:inline-block;" class="label label-default" >
+									${info.tagName}</span></a>
+									<br />
+							
+							<!-- </li> -->
 						</c:forEach>
-					</ul>
+					<!-- </ul> -->
 				</div>
 			</div>
 		</div>

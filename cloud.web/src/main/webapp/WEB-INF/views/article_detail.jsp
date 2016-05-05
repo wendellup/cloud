@@ -2,19 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <%-- <jsp:include page="header.jsp?id=123"/> --%>
-	<div style="height: 500px;">
+	<div style="min-height: 500px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
 				</div>
-				<div class="col-md-6">
-					<div style="height: 360px;">
+				<div class="col-md-8">
+					<div>
 						<h2>${article.title}</h2>
 						<br /><br />
-						content:${article.content} <br />
+						${article.content} <br />
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2">
 				</div>
 			</div>
 		</div>

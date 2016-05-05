@@ -15,7 +15,7 @@ public class ConstVar {
 	//软件推荐菜单对应的id
 	public static final int SOFTWARE_LIST_PARAM_ID = 803;
 	//默认的每页条数
-	public static final int ROWS_OF_PAGE = 5;
+	public static int ROWS_OF_PAGE = 10;
 	
 	static{
 		
@@ -25,6 +25,9 @@ public class ConstVar {
 		
 		REPEAT_READ_NUM = Utils.toInt(PropertyUtils.getValue("repeat_read_num"), 0);
 		System.out.println("repeat_read_num========"+REPEAT_READ_NUM);
+		
+		ROWS_OF_PAGE = Utils.toInt(PropertyUtils.getValue("rows_of_page"), 0);
+		System.out.println("rows_of_page========"+ROWS_OF_PAGE);
 	}
 	
 	/*

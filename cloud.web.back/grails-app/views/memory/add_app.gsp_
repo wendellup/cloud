@@ -1,0 +1,138 @@
+<e:form id="fm">
+<script type="text/javascript">
+	$(document).ready(function () {
+        attacheUpload("gamePathBtn", "apk", 1);
+        attacheUpload("gameIconBtn", "jpg", 2);
+        attacheUpload("imisPathBtn", "txt", 4);
+    });
+
+    //上传文件
+    function attacheUpload(btn, doc, type){
+        var url = "${createLink(controller: 'ajaxUpload', action: 'uploadFile')}?fileType=" + type;
+        var fileType = [];
+        if (doc=="doc" || doc=="doc_moban"){
+            fileType = ["docx","doc"];
+        } else if (doc=="txt" || doc=="txt_only"){
+            fileType = ["txt"];
+        } else if (doc == "jpg_only"){
+            fileType = ["jpg", "JPG"];
+        } else if (doc == "apk") {
+            fileType = ["apk"];
+        } else {
+            fileType = ['jpg','png','bmp','JPG','PNG','BMP'];
+        }
+
+        createFileUpload(btn,url,{},fileType,function(file, response){
+            if(response.result){
+                if(type == 1) {
+                    $("#packageName").val(response.packageName);
+                    $("#gameSize").val(response.fileSize);
+                    $("#gameDownloadUrl").val(response.downloadPath);
+                } else if(type == 2) {
+                    $("#gameIcon").val(response.downloadPath);
+                    $("#gameIconinfo").attr('src', response.realFilePath);
+                } else if(type == 4) {
+                    $("#imisUrl").val(response.downloadPath);
+                    $("#imsiNum").val(response.imsiNum);
+                }
+                $.messager.alert('提示', response.msg, 'info');
+            }else{
+                $.messager.alert('提示', response.msg, 'error');
+            }
+        });
+    };
+
+	</script>
+    %{--应用类型的objType设置为2--}%
+    <input type="hidden" name="objType" id="objType" value="2"/>
+	<table class="table2">
+        <tr>
+            <td width="30%" align="right"><span class="wordred">*</span>标题：</td>
+            <td align="left">
+                <input type="text" name="title" id="title" class="easyui-validatebox input_width200" data-options="required:true,missingMessage:'请输入标题'" onkeyup="checkLength(this, 28)">
+                <span style="color:#FF0000;">14个中文汉字以内</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><span class="wordred">*</span>描述：</td>
+            <td align="left">
+                <input type="text" name="description" id="description" class="easyui-validatebox input_width200" data-options="required:true,missingMessage:'请输入常驻内存描述'" onkeyup="checkLength(this, 40)">
+                <span style="color:#FF0000;">20个中文汉字以内</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><span class="wordred">*</span>类型：</td>
+            <td align="left">
+                <g:select id="advertType" name="advertType"  class="easyui-validatebox"  from='${advertTypeList}'
+                          noSelection="${['':'--请选择--']}" optionKey="key" optionValue="value"></g:select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><span class="wordred">*</span>是否静默安装：</td>
+            <td align="left">
+                <g:select id="silentDownload" name="silentDownload"  class="easyui-validatebox"  from='${silentDownloadList}'
+                           optionKey="key" optionValue="value"></g:select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">推送标识：</td>
+            <td align="left">
+                <g:select id="flag" name="flag"  class="easyui-validatebox"  from='${flagTypeList}'
+                          noSelection="${['':'--请选择--']}" optionKey="key" optionValue="value"></g:select>
+            </td>
+        </tr>
+        <tr class="time_">
+            <td align="right"><span class="wordred">*</span>开始时间：</td>
+            <td align="left"><input type="text" name="startTime" id="startTime" class="easyui-my97" data-options="required:true,missingMessage:'请输入开始时间',dateFmt:'yyyy-MM-dd HH:mm:ss'" readonly="readonly" /></td>
+        </tr>
+
+	   	<tr>
+	   		<td width="30%" class="tright"><span class="wordred">*</span>推送应用id：</td>
+	   		<td class="tleft">
+                <input type="text" name="linkUrl" id="linkUrl" class="easyui-validatebox input_width200" data-options="required:true,missingMessage:'请输入推送应用id'" onkeyup="checkLength(this, 40)">
+	   		</td>
+	   	</tr>
+        <tr>
+            <td width="30%" class="tright"><span class="wordred">*</span>推送应用名称：</td>
+            <td class="tleft">
+                <input type="text" name="gameName" id="gameName" class="easyui-validatebox input_width200" data-options="required:true,missingMessage:'请输入推送应用名称'" onkeyup="checkLength(this, 40)">
+            </td>
+        </tr>
+        <tr>
+            <td class="tright"><span class="wordred">*</span>上传应用实体包：</td>
+            <td colspan="3">
+                <a class="btn_orange fl"  href="javascript:void(0)" id="gamePathBtn">点击上传
+                    <input type="hidden" name="packageName" id="packageName">
+                    <input type="hidden" name="gameSize" id="gameSize">
+                    <input type="hidden" name="gameDownloadUrl" id="gameDownloadUrl" />
+                    <i class="error_tip" style="top:212px; left:5px;"></i>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td align="right" valign="top"><span class="wordred">*</span>应用图片上传：</td>
+            <td align="left" valign="top">
+                <input type="hidden" name="gameIcon" id="gameIcon" data-options="required:true" />
+                <img id="gameIconinfo" src="${request.contextPath}/images/image_preview.jpg" width="200" height="100"/>
+                <span><a href="javascript:void(0);" id="gameIconBtn">插入图片</a></span>
+                <div class="wordred"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="tright"><span class="wordred">*</span>上传imsi文件：</td>
+            <td colspan="3">
+                <a class="btn_orange fl"  href="javascript:void(0)" id="imisPathBtn">点击上传</a>
+                    <input type="hidden" name="imisUrl" id="imisUrl" />
+                    <input type="hidden" name="imsiNum" id="imsiNum" />
+                    %{--<i class="error_tip" style="top:212px; left:5px;"></i>--}%
+            </td>
+        </tr>
+        <tr>
+            <td width="30%" class="tright">备注：</td>
+            <td class="tleft">
+                <input type="text" name="remark" id="remark"  class="easyui-validatebox input_width200"  onkeyup="checkLength(this, 256)">
+                <span style="color:#FF0000;">128个中文汉字以内</span>
+            </td>
+        </tr>
+   </table>
+</e:form>

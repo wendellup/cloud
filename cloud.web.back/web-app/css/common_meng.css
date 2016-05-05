@@ -1,0 +1,44 @@
+.game_list{border: 1px solid #ddd; padding: 10px; margin: 10px; background: #fff; display: none;}
+.game_list div{ overflow-x: hidden; overflow-y: auto; }
+.game_list ul li{ float: left; width:130px; border: 1px solid #ddd; margin-right: 10px; margin-bottom: 10px; line-height: 35px; height: 35px; }
+.game_list ul li span{ display: inline-block; width: 110px; overflow: hidden; height: 35px; text-align: center;}
+.game_list ul li i{ display: inline-block; width: 15px; height: 15px; margin-right: 5px; cursor: pointer; margin-top: 10px; background: url(../images/x_btn_2.png)}
+.game_list p{ text-align: center;}
+.game_list p a{ height: 30px; display:inline-block; line-height: 30px; border-radius: 3px; background: #FF6633; color: #fff; padding: 0 15px; font-size: 14px; text-decoration:none;}
+.fr{ float: right;}
+.tr{ text-align: right;}
+.line_30{ line-height: 30px;}
+.table_btn{ margin-right: 10px;}
+.a_link {color: #0e95c1; text-decoration: initial;}
+.form_table tr td{ padding: 8px 5px;}
+.input_div{ border:1px solid #a9b2b9; position: relative; width: 200px}
+.input_div div{ padding-left: 10px;}
+.input_div b{ position: absolute; top: 0; right: 0; width: 30px; height: 34px; display: none;  background:#fff url(../images/form_icon.png) right 5px no-repeat;}
+.input_div:hover{ border-color: #38b0e7;}
+.input_div input,.input_div textarea{ border:none; background: none; height: 16px; padding: 9px 0; width: 100%; display: block;}
+.input_div span{position: absolute; top: 8px; left: 103%; white-space: nowrap; display: none;}
+
+.input_div textarea{height: 114px;  line-height: 20px;}
+
+
+
+.pic_div{ width: 148px; height: 154px; border: 1px solid #9ea8b0; text-align: center; color: #9aa2b2; font-size: 14px; margin-bottom: 20px; position: relative;}
+.pic_div img{position: absolute; top: 0px; left: 0px; z-index: 1; border: none;width: 140px;height: 146px;margin: 4px;}
+.pic_div:hover{border-color: #38b0e7;}
+.pic_div p{ display: block; line-height: normal; margin-bottom: 0;}
+.pic_div p:first-child{ position: absolute; left: 150px; width: 150px;}
+.pic_div a,.pic_div .btn5{ position: absolute; top: 95px; left: 46px; z-index: 2;}
+.pic_div span{position: absolute; top: 164px; font-size: 12px; left: 0px; display: block; line-height: 12px; width: 100%; text-align: center; display:none;}
+.pic_div span.error{color:#ed6c44;}
+.pic_div span.passed{ color: #38b0e7;}
+.pic_box .bd_blue{ border-color:#38b0e7; color: #888; }
+
+.error,.error:hover,.error div,.error:hover div,.error:hover ul,.error ul{ border-color: #ed6c44;}
+.error b{ display: inline-block;}
+.error i,.error:hover i{ background-color:#ed6c44;}
+.passed,.passed:hover,.passed div,.passed:hover div,.passed:hover ul,.passed ul{ border-color: #38b0e7;}
+.passed b{ display: inline-block; background-position: right -25px}
+
+.artwork{ position: absolute; z-index: 252; display: none;}
+.artwork em{ position: absolute; display: inline-block; width: 17px; height: 17px; top:10px; right: 15px; background:#fff url(../images/close_btn.png); cursor: pointer;}
+.mask{ position: fixed; display: none; z-index: 250; width: 100%; height: 100%; left: 0; top: 0; background: #aaa; opacity: 0.5; filter:alpha(opacity=35);}

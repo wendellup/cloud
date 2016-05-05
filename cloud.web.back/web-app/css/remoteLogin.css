@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+body, h1, h2, h3, h4, h5, h6, div, p, span, table, tr, th, td, ul, li, em, strong, input ,textarea, b{ margin:0; padding:0;}
+div{display:block;}
+body{ color:#787878; font-size:12px; height:auto;}
+.login_body{ background:url(../images/bg.png) center top no-repeat; }
+a{ color:#0e95c1; text-decoration:none;outline:none;} a:hover{ text-decoration:underline;} 
+span{outline:none;}
+em{ font-style:normal;}
+ul{ list-style:none;}
+table{ width:100%;}
+b{ font-weight:normal;}
+.tc{ text-align:center; margin-top:20px;} 
+
+
+.login_top{line-height:25px; margin-bottom:10px; height:100px; background:url(../images/logo.png) left 6px no-repeat; cursor:pointer; position:relative; overflow:hidden;}
+.login_btn{font-size:18px; color:#fff; display:inline-block; width:330px; height:40px; line-height:40px; font-weight:bold; background:#33CC00; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius:5px; }
+.login_form{padding-top:4px; display:block;}
+.login_pli{height:30px; margin-top:15px; padding-left:55px;}
+.login_pli .labe{width:70px; float:left; margin-right:5px; line-height:30px; font-size:14px; display:inline;}
+.inpt_Ptxt{background:#fff9e3; border:1px solid #bebebe; height:28px; line-height:28px; color:#b6b6b6; padding-left:3px; font-size:14px;}
+
+
+.login{ width:422px; height:240px; background:#fff; padding-top:132px; margin:60px auto 0; font-family:"MicroSoft YaHei"; background:url(../images/login_bg.png) center no-repeat; -webkit-border-radius: 5px; border-radius:5px;}
+.login .tab_tit{height:47px; line-height:47px; width:422px; margin-left:26px; overflow:hidden;}
+.login .tab_tit span{float:left; width:184px; text-align:center; background:#CCCCCC; cursor: pointer; font-weight:normal; font-size:14px;}
+.login .tab_tit .currt{background:#fff;}
+.block{ display:block;}
+.none{ display:none;}
+
+
+.btn_auto{  padding:0 5px; display:inline-block; line-height:26px; border:1px solid #bebebe; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius:5px; margin-left:8px;}
+
+
+.u_tab_no{float:left;padding:0 7px;line-height:26px;margin-top:9px;color:#666;font-weight:normal; background:#FF0000;}
+.u_tab_hover{ background:#000000; float:left; width:50px; text-align:center; line-height:26px;
+  margin-top:9px;
+  color:#666;
+  font-weight:normal;
+}

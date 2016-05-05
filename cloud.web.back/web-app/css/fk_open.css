@@ -1,0 +1,31 @@
+.height_auto{ padding: 20px 10px; }
+.blue_1{ padding: 5px 15px; color: #fff; background: #4a86e8;}
+.grey_1{ padding: 5px 15px; color: #fff; background: #cccccc;}
+.form{ margin: 5px auto}
+.form textarea{ margin-left: 30px; margin-top: 15px;}
+.height_auto ul{}
+.height_auto ul li{ border-bottom: 1px dotted #ccc; padding: 10px 0; line-height: 20px}
+.height_auto ul li:last-child{ border: none;}
+.height_auto ul li .fc_grey{ color: #aeb3b9}
+.height_auto ul li .text{ text-indent: 2em}
+
+.table_tip{ position: relative;}
+.table_tip a{ display: inline-block; width:16px; height: 16px; position: absolute; top: -2px; left: -19px; background: url(../images/skin/information.png); }
+.table_tip b{ display: none;}
+.table_tip:hover b{display: inline-block}
+.tip_top{position: absolute; width: 130px; height: 30px; text-align: center; display:none; z-index: 100; background: #fff; line-height: 30px; border: 1px solid #ccc}
+
+.pay_list{ margin-top: 20px}
+.pay_list > div{position: relative;}
+.pay_list > div > span{ display: inline-block; width: 180px; padding: 5px 20px; line-height: 28px; border: 1px solid #fff; }
+.pay_list > div > span > input{ float: left;}
+.pay_list > div > span > label{ float: left;}
+.pay_list > div:hover > span{ border-color: #63c3f5; background: #f3f3f3;}
+.pay_list > div:hover .pay_div{ display: block}
+.pay_list em{ float: right; padding: 0 5px; color: #63c3f5; cursor: pointer;}
+.pay_list > div:last-child em.down{ color: #ccc}
+.pay_list > div:first-child em.up{ color: #ccc; cursor: default}
+.pay_div{ position: absolute; width: 230px; display: none; padding: 8px 0; left:225px; top: -30px; border:1px solid #63c3f5; background: #f3f3f3; }
+.pay_div p{ width:100%; padding: 5px 15px; float: left }
+.pay_div p span{ margin-left: 10px; float: left}
+.pay_div p span input{ float: left; height: auto }
